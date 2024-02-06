@@ -1,54 +1,72 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\fakultas;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pengajuan;
+use App\Models\fakultas\Pengajuan;
 
 class PengajuanController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $pengajuans = Pengajuan::paginate(5);
-        $title = 'List of Pengajuans'; // Add this line to define $title
+        $pengajuans = Pengajuan::all();
 
-        return view('fakultas.pengajuan.index', compact('pengajuans', 'title'));
+        return view('fakultas.pengajuan.index', compact('pengajuans'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        $title = 'Create Pengajuan';
-        return view('fakultas.pengajuan.create', compact('title'));
+        return view('fakultas.pengajuan.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        // Melakukan validasi form
-        $validatedData = $request->validate([
+        $request->validate([
             'judul_kegiatan' => 'required|string|max:255',
             'total_anggaran' => 'required|numeric',
-            'waktu_pelaksanaan' => 'required|string',
-            'kriteria' => 'required|in:urgent,biasa',
+            'waktu_pelaksanaan' => 'required|date',
+            'kriteria' => 'required|string|max:255',
             'status' => 'required|string|max:255',
         ]);
 
-        // Simpan data ke database
-        Pengajuan::create($validatedData);
+        Pengajuan::create($request->all());
 
-        // Redirect atau berikan respons yang sesuai
         return redirect()
-            ->route('fakultas-pengajuan')
-            ->with('success', 'Pengajuan anggaran berhasil disimpan.');
+            ->route('pengajuan.index')
+            ->with('success', 'Pengajuan berhasil disimpan.');
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $pengajuan = Pengajuan::findOrFail($id);
+        return view('fakultas.pengajuan.show', compact('pengajuan'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(string $id)
     {
         $pengajuan = Pengajuan::findOrFail($id);
-
-        $title = 'Edit Pengajuan'; // Pastikan variabel $title telah didefinisikan
-        return view('fakultas.pengajuan.edit', compact('pengajuan', 'title'));
+        return view('fakultas.pengajuan.edit', compact('pengajuan'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -63,10 +81,13 @@ class PengajuanController extends Controller
         $pengajuan->update($request->all());
 
         return redirect()
-            ->route('fakultas-pengajuan')
+            ->route('pengajuan.index')
             ->with('success', 'Pengajuan berhasil diperbarui.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
         try {
@@ -74,11 +95,14 @@ class PengajuanController extends Controller
             $pengajuan->delete();
 
             return redirect()
-                ->route('fakultas-pengajuan.destroy')
+                ->back()
                 ->with('success', 'Pengajuan berhasil dihapus.');
         } catch (\Exception $e) {
+            // Log the error for debugging
+            \Log::error('Error deleting Pengajuan: ' . $e->getMessage());
+
             return redirect()
-                ->route('fakultas-pengajuan.destroy')
+                ->back()
                 ->with(
                     'error',
                     'Error deleting Pengajuan: ' . $e->getMessage()

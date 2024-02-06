@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
+            $table->string('judul_kegiatan');
+            $table->decimal('total_anggaran', 15, 0);
+            $table->date('waktu_pelaksanaan');
+            $table->string('kriteria');
+            $table->string('status');
+            $table->softDeletes(); 
             $table->timestamps();
         });
     }

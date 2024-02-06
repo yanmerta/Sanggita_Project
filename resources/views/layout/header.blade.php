@@ -28,6 +28,25 @@
             </a>
         </div>
         <!--end::Mobile logo-->
+        <!--begin::Aside toggler-->
+        <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle"
+            data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
+            data-kt-toggle-name="aside-minimize">
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
+            <span class="svg-icon svg-icon-1 rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none">
+                    <rect width="16" height="2" rx="1" transform="matrix(-1 0 0 1 16 0)"
+                        fill="currentColor" />
+                    <rect width="16" height="2" rx="1" transform="matrix(-1 0 0 1 16 6)"
+                        fill="currentColor" />
+                    <rect width="16" height="2" rx="1" transform="matrix(-1 0 0 1 16 12)"
+                        fill="currentColor" />
+                </svg>
+            </span>
+            <!--end::Svg Icon-->
+        </div>
+        <!--end::Aside toggler-->
 
         <!--begin::Wrapper-->
         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
@@ -45,7 +64,7 @@
                         <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
                             class="menu-item menu-lg-down-accordion me-lg-1">
                             <span class="menu-link py-3">
-                                <span class="card-label fw-bolder fs-4 mb-1">Universitas Hindu Indonesia</span>
+                                <span class="card-label fw-bolder fs-2 mb-1">Universitas Hindu Indonesia</span>
                             </span>
                         </div>
                     </div>
@@ -100,8 +119,8 @@
                                         class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
-                                                rx="1" transform="rotate(45 17.0365 15.1223)"
+                                            <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546"
+                                                height="2" rx="1" transform="rotate(45 17.0365 15.1223)"
                                                 fill="currentColor" />
                                             <path
                                                 d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
@@ -1719,7 +1738,8 @@
                                 <div class="menu-item px-3">
                                     <a href="/html/demo1/dist/account/settings.html" class="menu-link d-flex px-5">
                                         <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1" src="/html/demo1/dist/assets/media/flags/spain.svg"
+                                            <img class="rounded-1"
+                                                src="/html/demo1/dist/assets/media/flags/spain.svg"
                                                 alt="" />
                                         </span>Spanish</a>
                                 </div>

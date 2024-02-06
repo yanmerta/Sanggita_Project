@@ -84,7 +84,7 @@
                                                 <div class="mb-3">
                                                     <label for="total" class="form-label">Total</label>
                                                     <input type="text" class="form-control" id="total"
-                                                        placeholder="Masukkan Total">
+                                                        placeholder="Masukkan Harga Total">
                                                 </div>
                                             </form>
                                         </div>
@@ -92,7 +92,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
                                 </div>

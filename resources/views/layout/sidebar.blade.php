@@ -7,30 +7,11 @@
         <!--begin::Logo-->
         <img alt="Logo" src="/html/demo1/dist/assets/media/logos/logo.png" class="h-40px logo" />
         <div class="text-center mt-2">
-            <p class="text-muted" style="font-size: 18px; margin-bottom: 8px;">SANGGITA</p>
-            <p class="text-muted" style="font-size: 8px; margin-top: -8px;">Sistem Realisasai Anggaran
+            <p class="text-muted" style="font-size: 25px; margin-bottom: 8px;">SANGGITA</p>
+            <p class="text-muted" style="font-size: 9px; margin-top: -8px;">Sistem Realisasai Anggaran
                 Kegiatan</p>
         </div>
         <!--end::Logo-->
-        <!--begin::Aside toggler-->
-        <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle"
-            data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
-            data-kt-toggle-name="aside-minimize">
-            <!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
-            <span class="svg-icon svg-icon-1 rotate-180">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none">
-                    <rect width="16" height="2" rx="1" transform="matrix(-1 0 0 1 16 0)"
-                        fill="currentColor" />
-                    <rect width="16" height="2" rx="1" transform="matrix(-1 0 0 1 16 6)"
-                        fill="currentColor" />
-                    <rect width="16" height="2" rx="1" transform="matrix(-1 0 0 1 16 12)"
-                        fill="currentColor" />
-                </svg>
-            </span>
-            <!--end::Svg Icon-->
-        </div>
-        <!--end::Aside toggler-->
     </div>
     <!--end::Brand-->
 
@@ -45,9 +26,10 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
                 <div class="menu-item here show menu-accordion">
-                    <span class="menu-link" href="{{ route('dashboard') }}">
+                    <a class="menu-link" href="{{ route('dashboard') }}" title="Dashboard" data-bs-toggle="tooltip"
+                        data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none">
@@ -63,8 +45,8 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Dashboards</span>
-                    </span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
                 </div>
                 {{-- Layanan Rektor --}}
                 <div data-kt-menu-trigger="click" class="menu-item">
