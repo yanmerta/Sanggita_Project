@@ -60,27 +60,36 @@
                                         {{ number_format($pengajuan->total_anggaran) }}</td>
                                     <td style="border: 1px solid #dee2e6;">
                                         {{ \Carbon\Carbon::parse($pengajuan->waktu_pelaksanaan)->format('d/m/Y') }}</td>
-                                    <td style="border: 1px solid #dee2e6;text-align:center">{{ $pengajuan->kriteria }}</td>
+                                    <td style="border: 1px solid #dee2e6;text-align:center">{{ $pengajuan->kriteria }}
+                                    </td>
                                     <td
                                         style="border: 1px solid #dee2e6; text-align: center; @if (Str::lower($pengajuan->status) === 'ditolak') color: red; @endif">
                                         {{ $pengajuan->status }}
                                     </td>
 
                                     <td style="border: 1px solid #dee2e6;" class="text-center">
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#showModal{{ $pengajuan->id }}">
-                                            <i class="bi bi-info-circle"></i>
-                                        </button>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn-primary btn-sm m-1" data-bs-toggle="modal"
+                                                data-bs-target="#showModal{{ $pengajuan->id }}">
+                                                <i class="bi bi-info-circle"></i>
+                                            </button>
 
-                                        <a href="{{ route('fakultas-pengajuan.edit', ['id' => $pengajuan->id]) }}"
-                                            class="btn btn-warning btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                            <a href="{{ route('fakultas-pengajuan.edit', $pengajuan->id) }}"
+                                                class="btn btn-warning btn-sm m-1">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
 
-                                        <a href="{{ route('fakultas-pengajuan.destroy', ['id' => $pengajuan->id]) }}"
-                                            class="btn btn-sm btn-danger delete-category" id="delete">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                            <form id="deleteForm"
+                                                action="{{ route('fakultas-pengajuan.destroy', $pengajuan->id) }}"
+                                                method="POST" class="m-1">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-danger btn-sm" id="delete">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+
                                     </td>
                                 </tr>
                                 <!-- Modal -->
@@ -96,7 +105,8 @@
                                             <div class="modal-body">
                                                 <!-- Isi dengan informasi detail pengajuan, misalnya -->
                                                 <p>Judul Kegiatan: {{ $pengajuan->judul_kegiatan }}</p>
-                                                <p>Total Anggaran: Rp. {{ number_format($pengajuan->total_anggaran) }}</p>
+                                                <p>Total Anggaran: Rp. {{ number_format($pengajuan->total_anggaran) }}
+                                                </p>
                                                 <p>Waktu Pelaksanaan: {{ $pengajuan->waktu_pelaksanaan }}</p>
                                                 <p>Kriteria: {{ $pengajuan->kriteria }}</p>
                                                 <p>Status: {{ $pengajuan->status }}</p>

@@ -91,7 +91,28 @@
     <script src="{{ asset('html/demo1/dist/assets/js/custom/utilities/modals/users-search.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on('click', '#delete', function() {
+                Swal.fire({
+                    title: "Yakin Ingin Menghapus Data ini?",
+                    text: "Anda tidak akan dapat mengembalikannya!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Jika pengguna mengonfirmasi, kirim formulir
+                        document.getElementById("deleteForm").submit();
+                    }
+                });
+            });
+        });
+    </script>
     <!-- Display success message -->
     @yield('scripts')
     <!--end::Page Custom Javascript-->

@@ -38,7 +38,7 @@ class PengajuanController extends Controller
         // Redirect atau berikan respons yang sesuai
         return redirect()
             ->route('fakultas-pengajuan')
-            ->with('success', 'Pengajuan anggaran berhasil disimpan.');
+            ->with('success', 'Pengajuan anggaran berhasil dicreate.');
     }
 
     public function edit(string $id)
@@ -69,20 +69,14 @@ class PengajuanController extends Controller
 
     public function destroy($id)
     {
-        try {
-            $pengajuan = Pengajuan::findOrFail($id);
-            $pengajuan->delete();
+        $transaksi = Pengajuan::where('id', $id)->first();
+        $transaksi->delete();
 
-            return redirect()
-                ->route('fakultas-pengajuan.destroy')
-                ->with('success', 'Pengajuan berhasil dihapus.');
-        } catch (\Exception $e) {
-            return redirect()
-                ->route('fakultas-pengajuan.destroy')
-                ->with(
-                    'error',
-                    'Error deleting Pengajuan: ' . $e->getMessage()
-                );
-        }
+        return redirect()
+            ->route('fakultas-pengajuan')
+            ->with(
+                'success',
+                'Data Layanan Pengajuan Anggaran berhasil di hapus.'
+            );
     }
 }

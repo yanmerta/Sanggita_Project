@@ -90,6 +90,12 @@ class PengajuanController extends Controller
      */
     public function destroy($id)
     {
+        $pengajuan = Pengajuan::findOrFail($id);
+        $pengajuan->delete();
+
+        return redirect()
+            ->back()
+            ->with('success', 'Pengajuan berhasil dihapus.');
         try {
             $pengajuan = Pengajuan::findOrFail($id);
             $pengajuan->delete();

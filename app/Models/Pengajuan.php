@@ -17,12 +17,4 @@ class Pengajuan extends Model
         'kriteria',
         'status',
     ];
-
-    protected $dates = [
-        // 'waktu_pelaksanaan',
-        'created_at',
-        'updated_at',
-    ];
-
-    use SoftDeletes;
 }
