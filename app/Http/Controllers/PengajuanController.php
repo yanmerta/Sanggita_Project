@@ -7,10 +7,30 @@ use App\Models\Pengajuan;
 
 class PengajuanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $pengajuans = Pengajuan::paginate(5);
-        $title = 'List of Pengajuans'; // Add this line to define $title
+        $title = 'Layanan Pengajuan Anggaran';
+
+        $query = Pengajuan::query();
+
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q
+                    ->where('judul_kegiatan', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('kriteria', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('status', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+
+        // Tambahkan bagian untuk filter berdasarkan kriteria di sini
+        if ($request->filled('filter_status')) {
+            $filter = $request->input('filter_status');
+            $query->where('status', $filter);
+        }
+
+        $pengajuans = $query->paginate(5);
 
         return view('fakultas.pengajuan.index', compact('pengajuans', 'title'));
     }
