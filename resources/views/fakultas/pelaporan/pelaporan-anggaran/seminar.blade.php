@@ -51,25 +51,26 @@
                                         </div>
 
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="{{ route('fakultas-pelaporan.store') }}" method="POST">
+                                                @csrf
                                                 <!-- item -->
                                                 <div class="mb-3">
                                                     <label for="item" class="form-label">Item</label>
-                                                    <input type="text" class="form-control" id="item"
+                                                    <input type="text" class="form-control" id="item" name="item"
                                                         placeholder="Masukkan Item">
                                                 </div>
 
                                                 <!-- Satuan -->
                                                 <div class="mb-3">
                                                     <label for="satuan" class="form-label">Satuan</label>
-                                                    <input type="number" class="form-control" id="satuan"
+                                                    <input type="text" class="form-control" id="satuan" name="satuan"
                                                         placeholder="Masukkan Satuan">
                                                 </div>
 
                                                 <!-- Volume -->
                                                 <div class="mb-3">
                                                     <label for="volume" class="form-label">Volume</label>
-                                                    <input type="text" class="form-control" id="volume"
+                                                    <input type="text" class="form-control" id="volume" name="volume"
                                                         placeholder="Masukkan Volume">
                                                 </div>
 
@@ -77,26 +78,27 @@
                                                 <div class="mb-3">
                                                     <label for="total" class="form-label">Harga Satuan</label>
                                                     <input type="text" class="form-control" id="hargasatuan"
-                                                        placeholder="Masukkan Harga Satuan">
+                                                        name="hargasatuan" placeholder="Masukkan Harga Satuan">
                                                 </div>
 
                                                 <!-- Total -->
                                                 <div class="mb-3">
                                                     <label for="total" class="form-label">Total</label>
-                                                    <input type="text" class="form-control" id="total"
+                                                    <input type="text" class="form-control" id="total" name="total"
                                                         placeholder="Masukkan Total">
                                                 </div>
-                                            </form>
-                                        </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-light"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
 
                         </div>
                     </h3>
@@ -104,54 +106,55 @@
                 <!--end::Header-->
                 <!--begin::Body-->
                 <div class="card-body py-3">
-                    <!--begin::Table container-->
-                    <div class="table-responsive">
-                        <!--begin::Table-->
-                        <table class="table align-middle gs-0 gy-4">
-                            <!--begin::Table head-->
-                            <thead>
-                                <tr class="fw-bolder text-muted bg-light">
-                                    <th>No</th>
-                                    <th>Item</th>
-                                    <th>Satuan</th>
-                                    <th>Volume</th>
-                                    <th>Harga Satuan</th>
-                                    <th>Total</th>
-                                    <th class="text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Honor Narasumber</td>
-                                    <td>Oj</td>
-                                    <td>4</td>
-                                    <td>150000</td>
-                                    <td>600.000</td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-danger btn-sm">
-                                            <i class="bi bi-trash bi-1x"></i>
-                                        </a>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="card-toolbar text-end">
-                            <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="#">
-                                <!--begin::Svg Icon | path: icons/duotune/files/fil122.svg-->
-                                <span class="svg-icon svg-icon-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none">
-                                        <path
-                                            d="M14 2H20C21.1 2 22 2.9 22 4V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V4C2 2.9 2.9 2 4 2H10L12 4H20C21.1 4 22 4.9 22 6V16H20V6H18V16H16V6H14V16H12V6H10V16H8V6H6V16H4V4H14V2ZM14 16H16V18H14V16ZM12 16H14V18H12V16ZM10 16H12V18H10V16ZM8 16H10V18H8V16Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->Simpan
-                            </a>
+                    <form action="{{ route('fakultas-pelaporan-seminar') }}" method="GET">
+                        <div class="table-responsive">
+                            <!--begin::Table-->
+                            <table class="table align-middle gs-0 gy-4">
+                                <!--begin::Table head-->
+                                <thead>
+                                    <tr class="fw-bolder text-muted bg-light">
+                                        <th>No</th>
+                                        <th>Item</th>
+                                        <th>Satuan</th>
+                                        <th>Volume</th>
+                                        <th>Harga Satuan</th>
+                                        <th>Total</th>
+                                        <th class="text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $d)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $d->item }}</td>
+                                            <td>{{ $d->satuan }}</td>
+                                            <td>{{ $d->volume }}</td>
+                                            <td>{{ $d->harga_satuan }}</td>
+                                            <td>{{ $d->total }}</td>
+                                            <td class="text-center">
+                                                <a href="#" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash bi-1x"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div class="card-toolbar text-end">
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="#">
+                                    <!--begin::Svg Icon | path: icons/duotune/files/fil122.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M14 2H20C21.1 2 22 2.9 22 4V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V4C2 2.9 2.9 2 4 2H10L12 4H20C21.1 4 22 4.9 22 6V16H20V6H18V16H16V6H14V16H12V6H10V16H8V6H6V16H4V4H14V2ZM14 16H16V18H14V16ZM12 16H14V18H12V16ZM10 16H12V18H10V16ZM8 16H10V18H8V16Z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->Simpan
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     <!--end::Table-->
                 </div>
                 <!--end::Table container-->

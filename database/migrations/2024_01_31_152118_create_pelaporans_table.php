@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('pelaporans', function (Blueprint $table) {
             $table->id();
+            $table->string('item');
+            $table->string('satuan');
+            $table->integer('volume');
+            $table->integer('harga_satuan');
+            $table->integer('total');
             $table->timestamps();
         });
     }

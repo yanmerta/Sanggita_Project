@@ -9,22 +9,13 @@ class PengajuanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function rektor_pengajuan()
+    public function index()
     {
         $data = array(
             'title' => 'Pengajuan Rektor',
         );
 
         return view('rektor.pengajuan.index', $data);
-    }
-
-    public function fakultas_pengajuan()
-    {
-        $data = array(
-            'title' => 'Pengajuan Fakultas',
-        );
-
-        return view('fakultas.pengajuan.index', $data);
     }
 
     /**

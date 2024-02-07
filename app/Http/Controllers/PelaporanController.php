@@ -10,40 +10,13 @@ class PelaporanController extends Controller
      * Display a listing of the resource.
      */
 
-    public function rektor_pelaporan()
+    public function index()
     {
         $data = array(
             'title' => 'Pelaporan Rektor',
         );
 
         return view('rektor.pelaporan.index', $data);
-    }
-
-    public function fakultas_pelaporan()
-    {
-        $data = array(
-            'title' => 'Pelaporan Anggaran Fakultas',
-        );
-
-        return view('fakultas.pelaporan.pelaporan-anggaran.index', $data);
-    }
-
-    public function fakultas_pelaporan_kegiatan()
-    {
-        $data = array(
-            'title' => 'Pelaporan Kegiatan Fakultas',
-        );
-
-        return view("fakultas.pelaporan.pelaporan-kegiatan.index", $data);
-    }
-
-    public function fakultas_pelaporan_seminar()
-    {
-        $data = array(
-            'title' => 'Pelaporan Seminar Fakultas',
-        );
-
-        return view('fakultas.pelaporan.pelaporan-anggaran.seminar', $data);
     }
 
     /**

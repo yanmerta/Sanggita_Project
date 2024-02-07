@@ -88,7 +88,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('rektor-pengajuan') }}">
+                            <a class="menu-link" href="{{ route('rektor-pengajuan.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -112,7 +112,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('rektor-pelaporan') }}">
+                            <a class="menu-link" href="{{ route('rektor-pelaporan.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -148,7 +148,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('fakultas-pengajuan') }}">
+                            <a class="menu-link" href="{{ route('fakultas-pengajuan.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -190,7 +190,7 @@
                             </span>
                             <div class="menu-sub menu-sub-accordion menu-active-bg">
                                 <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('fakultas-pelaporan') }}">
+                                    <a class="menu-link" href="{{ route('fakultas-pelaporan.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
