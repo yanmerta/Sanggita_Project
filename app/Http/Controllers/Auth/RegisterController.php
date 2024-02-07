@@ -15,7 +15,15 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('auth.register');
+        $userData = User::get();
+
+        $viewData = [
+            'title' => 'Register',
+            'data'  => $userData,
+        ];
+
+        return view('auth.register', $viewData);
+        // return view('auth.register');
     }
 
     /**
@@ -31,13 +39,14 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
-            'nama'  => 'required',
+            'name'  => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
 
-        $data['name']       = $request->nama;
+        $data['name']       = $request->name;
         $data['email']      = $request->email;
         $data['password']   = Hash::make($request->password);
 
@@ -49,7 +58,7 @@ class RegisterController extends Controller
         ];
 
         if (Auth::attempt($login)) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('dashboard');
         } else {
             return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
