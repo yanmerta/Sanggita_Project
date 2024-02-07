@@ -10,7 +10,7 @@
             </div>
             <div class="card-body py-3">
                 <!-- Add your form for creating a new Pengajuan -->
-                <form action="{{ route('fakultas-pelaporan-store') }}" method="post">
+                <form action="{{ route('admin.fakultas-pelaporan-store') }}" method="post">
                     @csrf
 
                     <!-- Item -->
@@ -49,7 +49,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('fakultas-pelaporan-seminar') }}" class="btn btn-danger">Kembali</a>
+                    <a href="{{ route('admin.fakultas-pelaporan-seminar') }}" class="btn btn-danger">Kembali</a>
                 </form>
             </div>
         </div>

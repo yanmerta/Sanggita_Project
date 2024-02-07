@@ -56,7 +56,7 @@ class PengajuanController extends Controller
 
         // Redirect atau berikan respons yang sesuai
         return redirect()
-            ->route('fakultas-pengajuan')
+            ->route('admin.fakultas-pengajuan')
             ->with('success', 'Pengajuan anggaran berhasil dicreate.');
     }
 
@@ -82,7 +82,7 @@ class PengajuanController extends Controller
         $pengajuan->update($request->all());
 
         return redirect()
-            ->route('fakultas-pengajuan')
+            ->route('admin.fakultas-pengajuan')
             ->with('success', 'Pengajuan berhasil diperbarui.');
     }
 
@@ -92,7 +92,7 @@ class PengajuanController extends Controller
         $pengajuan->delete();
 
         return redirect()
-            ->route('fakultas-pengajuan')
+            ->route('admin.fakultas-pengajuan')
             ->with(
                 'success',
                 'Data Layanan Pengajuan Anggaran berhasil di hapus.'

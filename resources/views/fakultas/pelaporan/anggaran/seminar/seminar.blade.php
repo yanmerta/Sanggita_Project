@@ -15,7 +15,7 @@
                         </div>
                     </a>
                     <div class="card-toolbar">
-                        <a href="{{ route('fakultas-pelaporan-create') }}" class="btn btn-sm btn-success">
+                        <a href="{{ route('admin.fakultas-pelaporan-create') }}" class="btn btn-sm btn-success">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
@@ -142,7 +142,7 @@
                                             </a> --}}
 
                                             <form id="deleteForm"
-                                                action="{{ route('fakultas-pelaporan.destroy', $pelaporan->id) }}"
+                                                action="{{ route('admin.fakultas-pelaporan.destroy', $pelaporan->id) }}"
                                                 method="POST" class="m-1">
                                                 @csrf
                                                 @method('DELETE')

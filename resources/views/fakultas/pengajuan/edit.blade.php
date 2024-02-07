@@ -10,7 +10,7 @@
             </div>
             <div class="card-body py-3">
                 <!-- Add your form for editing Pengajuan -->
-                <form action="{{ route('fakultas-pengajuan.update', ['id' => $pengajuan->id]) }}" method="post">
+                <form action="{{ route('admin.fakultas-pengajuan.update', ['id' => $pengajuan->id]) }}" method="post">
                     @csrf
                     @method('PUT') <!-- Use PUT method for updating -->
 
@@ -56,7 +56,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('fakultas-pengajuan') }}" class="btn btn-danger">Kembali</a>
+                    <a href="{{ route('admin.fakultas-pengajuan') }}" class="btn btn-danger">Kembali</a>
                 </form>
             </div>
         </div>

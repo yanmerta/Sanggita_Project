@@ -26,8 +26,9 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
                 <div class="menu-item here show menu-accordion">
-                    <a class="menu-link" href="{{ route('dashboard') }}" title="Dashboard" data-bs-toggle="tooltip"
-                        data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                    <a class="menu-link" href="{{ route('admin.dashboard') }}" title="Dashboard"
+                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
+                        data-bs-placement="right">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -70,7 +71,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('rektor-pengajuan') }}">
+                            <a class="menu-link" href="{{ route('admin.rektor-pengajuan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -78,7 +79,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('rektor-persetujuan') }}">
+                            <a class="menu-link" href="{{ route('admin.rektor-persetujuan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -86,7 +87,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('rektor-realisasi') }}">
+                            <a class="menu-link" href="{{ route('admin.rektor-realisasi') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -94,7 +95,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('rektor-pelaporan') }}">
+                            <a class="menu-link" href="{{ route('admin.rektor-pelaporan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -130,7 +131,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('fakultas-pengajuan') }}">
+                            <a class="menu-link" href="{{ route('admin.fakultas-pengajuan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -138,7 +139,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('fakultas-persetujuan') }}">
+                            <a class="menu-link" href="{{ route('admin.fakultas-persetujuan') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -146,7 +147,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('fakultas-realisasi') }}">
+                            <a class="menu-link" href="{{ route('admin.fakultas-realisasi') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -172,7 +173,7 @@
                             </span>
                             <div class="menu-sub menu-sub-accordion menu-active-bg">
                                 <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('fakultas-pelaporan') }}">
+                                    <a class="menu-link" href="{{ route('admin.fakultas-pelaporan') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -180,7 +181,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('fakultas-pelaporan-kegiatan') }}">
+                                    <a class="menu-link" href="{{ route('admin.fakultas-pelaporan-kegiatan') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

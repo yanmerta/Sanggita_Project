@@ -39,7 +39,8 @@
                                     <td>Urgent</td>
                                     <td>Usulan direalisasikan sebesar Rp.8.000.000</td>
                                     <td class="text-start">
-                                        <a href="{{ route('fakultas-pelaporan-seminar') }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('admin.fakultas-pelaporan-seminar') }}"
+                                            class="btn btn-warning btn-sm">
                                             <span style="display: inline-block;">Input Laporan</span>
                                         </a>
                                     </td>

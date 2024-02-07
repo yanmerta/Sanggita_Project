@@ -16,17 +16,19 @@ class PelaporanController extends Controller
         $pelaporans = Pelaporan::paginate(5);
         $title = 'List of Pelaporans Anggaran Fakultas'; // Add this line to define $title
 
-        return view('fakultas.pelaporan.anggaran.index', compact('pelaporans', 'title'));
-
+        return view(
+            'fakultas.pelaporan.anggaran.index',
+            compact('pelaporans', 'title')
+        );
     }
 
     public function fakultas_pelaporan_kegiatan()
     {
-        $data = array(
+        $data = [
             'title' => 'Pelaporan Kegiatan Fakultas',
-        );
+        ];
 
-        return view("fakultas.pelaporan.kegiatan.index", $data);
+        return view('fakultas.pelaporan.kegiatan.index', $data);
     }
 
     public function fakultas_pelaporan_seminar()
@@ -34,24 +36,30 @@ class PelaporanController extends Controller
         $pelaporans = Pelaporan::paginate(5);
         $title = 'List of Pelaporans Anggaran Seminar Fakultas'; // Add this line to define $title
 
-        return view('fakultas.pelaporan.anggaran.seminar.seminar', compact('pelaporans', 'title'));
+        return view(
+            'fakultas.pelaporan.anggaran.seminar.seminar',
+            compact('pelaporans', 'title')
+        );
     }
 
     public function create()
     {
         $title = 'Create Pelaporan Seminar';
-        return view('fakultas.pelaporan.anggaran.seminar.create', compact('title'));
+        return view(
+            'fakultas.pelaporan.anggaran.seminar.create',
+            compact('title')
+        );
     }
 
     public function store(Request $request)
     {
         // Melakukan validasi form
         $validatedData = $request->validate([
-            'item'         => 'required|string|max:255',
-            'satuan'       => 'required|string',
-            'volume'       => 'required|string',
+            'item' => 'required|string|max:255',
+            'satuan' => 'required|string',
+            'volume' => 'required|string',
             'harga_satuan' => 'required|numeric',
-            'total'        => 'required|numeric',
+            'total' => 'required|numeric',
         ]);
 
         // Simpan data ke database
@@ -59,7 +67,7 @@ class PelaporanController extends Controller
 
         // Redirect atau berikan respons yang sesuai
         return redirect()
-            ->route('fakultas-pelaporan-seminar')
+            ->route('admin.fakultas-pelaporan-seminar')
             ->with('success', 'Pelaporan anggaran seminar berhasil dicreate.');
     }
 
@@ -85,7 +93,7 @@ class PelaporanController extends Controller
         $pengajuan->update($request->all());
 
         return redirect()
-            ->route('fakultas-pengajuan')
+            ->route('admin.fakultas-pengajuan')
             ->with('success', 'Pengajuan berhasil diperbarui.');
     }
 
@@ -95,7 +103,7 @@ class PelaporanController extends Controller
         $pelaporan->delete();
 
         return redirect()
-            ->route('fakultas-pelaporan-seminar')
+            ->route('admin.fakultas-pelaporan-seminar')
             ->with(
                 'success',
                 'Data Layanan Pengajuan Anggaran berhasil di hapus.'

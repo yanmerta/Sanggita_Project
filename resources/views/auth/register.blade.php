@@ -52,18 +52,7 @@
                             <!--end::Link-->
                         </div>
                         <!--end::Heading-->
-                        <!--begin::Action-->
-                        <button type="button" class="btn btn-light-primary fw-bolder w-100 mb-10">
-                            <img alt="Logo" src="/html/demo1/dist/assets/media/svg/brand-logos/google-icon.svg"
-                                class="h-20px me-3" />Sign in with Google</button>
-                        <!--end::Action-->
                         <!--begin::Separator-->
-                        <div class="d-flex align-items-center mb-10">
-                            <div class="border-bottom border-gray-300 mw-50 w-100"></div>
-                            <span class="fw-bold text-gray-400 fs-7 mx-2">OR</span>
-                            <div class="border-bottom border-gray-300 mw-50 w-100"></div>
-                        </div>
-                        <!--end::Separator-->
                         <div class="fv-row mb-10">
                             <label class="form-label fw-bolder text-dark fs-6">Nama</label>
                             <input class="form-control form-control-lg form-control-solid" type="text" placeholder=""
