@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelaporanController;
 use App\Http\Controllers\PengajuanController;
@@ -20,11 +22,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+// Login
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route::get('/forgot-password', [LoginController::class, 'forgot_password'])->name('forgot-password');
+// Route::post('/forgot-password-act', [LoginController::class, 'forgot_password_act'])->name('forgot-password-act');
+// Route::get('/validasi-forgot-password/{token}', [LoginController::class, 'validasi_forgot_password'])->name('validasi-forgot-password');
+// Route::post('/validasi-forgot-password-act', [LoginController::class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
+
+// Register
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 // Fakultas
 // Persetujuan
@@ -64,3 +80,4 @@ Route::get('/rektor-realisasi', [RealisasiController::class,'rektor_realisasi',]
 
 // Pelaporan
 Route::get('/rektor-pelaporan', [RektorPelaporanController::class,'index',])->name('rektor-pelaporan');
+

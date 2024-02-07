@@ -6,29 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $userData = User::get();
-
-        $viewData = [
-            'title' => 'Login',
-            'data'  => $userData,
-        ];
-
-        return view('auth.login', $viewData);
+        return view('auth.register');
     }
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login')->with('success','kamu berhasil logout');
-    }
     /**
      * Show the form for creating a new resource.
      */
@@ -43,17 +32,24 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email'     => 'required',
-            'password'  => 'required',
+            'nama'  => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6'
         ]);
 
-        $data = [
+        $data['name']       = $request->nama;
+        $data['email']      = $request->email;
+        $data['password']   = Hash::make($request->password);
+
+        User::create($data);
+
+        $login = [
             'email'     => $request->email,
-            'password'  => $request->password,
+            'password'  => $request->password
         ];
 
-        if (Auth::attempt($data)) {
-            return redirect()->route('dashboard');
+        if (Auth::attempt($login)) {
+            return redirect()->route('admin.dashboard');
         } else {
             return redirect()->route('login')->with('failed', 'Email atau Password Salah');
         }
