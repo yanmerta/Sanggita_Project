@@ -3,7 +3,7 @@
 @section('content')
     <div id="kt_content_container" class="container-xxl">
         <div class="card mb-5 mb-xl-8">
-            <div class="card-header border-0 pt-5">
+            <div class="card-header border-0 pt-5 ">
                 <h3 class="card-title align-items-start flex-column">
                     <span class="card-label fw-bolder fs-3 mb-8">Layanan Pengajuan Anggaran - Periode Tahun 2024</span>
                     <div class="card-toolbar">
@@ -28,105 +28,158 @@
             <div class="card-body py-3">
                 <!-- Move the success and error alerts here -->
                 @if (session('success'))
-                    <div class="alert alert-success">
+                    <div id="successAlert" class="alert alert-success">
                         {{ session('success') }}
                     </div>
+                    <script>
+                        window.setTimeout(function() {
+                            $("#successAlert").fadeTo(500, 0).slideUp(500, function() {
+                                $(this).remove();
+                            });
+                        }, 5000); // 5000 milliseconds = 5 seconds
+                    </script>
                 @endif
 
                 @if (session('error'))
-                    <div class="alert alert-danger">
+                    <div id="errorAlert" class="alert alert-danger">
                         {{ session('error') }}
                     </div>
+                    <script>
+                        window.setTimeout(function() {
+                            $("#errorAlert").fadeTo(500, 0).slideUp(500, function() {
+                                $(this).remove();
+                            });
+                        }, 5000); // 5000 milliseconds = 5 seconds
+                    </script>
                 @endif
                 <div class="table-responsive">
-                    <table class="table align-middle gs-0 gy-4" style="border: 1px solid #dee2e6;">
-                        <thead>
-                            <tr class="fw-bolder text-muted bg-light">
-                                <th style="border: 1px solid #dee2e6; text-align:center">No.</th>
-                                <th style="border: 1px solid #dee2e6;text-align:center">Judul Kegiatan</th>
-                                <th style="border: 1px solid #dee2e6;text-align:center">Total Anggaran</th>
-                                <th style="border: 1px solid #dee2e6;text-align:center">Waktu Pelaksanaan</th>
-                                <th style="border: 1px solid #dee2e6;text-align:center">Kriteria</th>
-                                <th style="border: 1px solid #dee2e6;text-align:center">Status</th>
-                                <th style="border: 1px solid #dee2e6;text-align:center"class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($pengajuans as $pengajuan)
-                                <tr>
-                                    <td style="border: 1px solid #dee2e6;text-align:center">{{ $loop->iteration }}</td>
-                                    <td style="border: 1px solid #dee2e6;">{{ $pengajuan->judul_kegiatan }}</td>
-                                    <td style="border: 1px solid #dee2e6;">Rp.
-                                        {{ number_format($pengajuan->total_anggaran) }}</td>
-                                    <td style="border: 1px solid #dee2e6;">
-                                        {{ \Carbon\Carbon::parse($pengajuan->waktu_pelaksanaan)->format('d/m/Y') }}</td>
-                                    <td style="border: 1px solid #dee2e6;text-align:center">{{ $pengajuan->kriteria }}
-                                    </td>
-                                    <td
-                                        style="border: 1px solid #dee2e6; text-align: center; @if (Str::lower($pengajuan->status) === 'ditolak') color: red; @endif">
-                                        {{ $pengajuan->status }}
-                                    </td>
+                    <div class="card-tools d-flex justify-content-start mb-3">
+                        <form action="{{ route('fakultas-pengajuan') }}" method="GET" style="width: 470px;" left>
+                            <div class="input-group input-group-sm">
+                                <select class="form-select" name="filter_status">
+                                    <option value="" selected disabled>Filter by Status</option>
+                                    <option value="diusulkan"
+                                        {{ request('filter_status') == 'diusulkan' ? 'selected' : '' }}>
+                                        Diusulkan
+                                    </option>
+                                    <option value="ditolak" {{ request('filter_status') == 'ditolak' ? 'selected' : '' }}>
+                                        Ditolak
+                                    </option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-filter"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="{{ route('fakultas-pengajuan') }}" method="GET" style="width: 470px;"
+                            justify-content-end>
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="search" class="form-control" placeholder="Search"
+                                    value="{{ request('search') }}">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <table class="table align-middle gs-0 gy-4" style="border: 1px solid #dee2e6;">
+                    <thead>
+                        <tr class="fw-bolder text-muted bg-light">
+                            <th style="border: 1px solid #dee2e6; text-align:center">No.</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">Judul Kegiatan</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">Total Anggaran</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">Waktu Pelaksanaan</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">Kriteria</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">Status</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center"class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($pengajuans as $pengajuan)
+                            <tr>
+                                <td style="border: 1px solid #dee2e6;text-align:center">{{ $loop->iteration }}</td>
+                                <td style="border: 1px solid #dee2e6;">{{ $pengajuan->judul_kegiatan }}</td>
+                                <td style="border: 1px solid #dee2e6;">Rp.
+                                    {{ number_format($pengajuan->total_anggaran) }}</td>
+                                <td style="border: 1px solid #dee2e6; text-align:center">
+                                    {{ \Carbon\Carbon::parse($pengajuan->waktu_pelaksanaan)->format('d/m/Y') }}</td>
+                                <td style="border: 1px solid #dee2e6;text-align:center">{{ $pengajuan->kriteria }}
+                                </td>
+                                <td
+                                    style="border: 1px solid #dee2e6; text-align: center; @if (Str::lower($pengajuan->status) === 'ditolak') color: red; @endif">
+                                    {{ $pengajuan->status }}
+                                </td>
 
-                                    <td style="border: 1px solid #dee2e6;" class="text-center">
-                                        <div class="d-flex justify-content-center">
-                                            <button type="button" class="btn btn-primary btn-sm m-1" data-bs-toggle="modal"
-                                                data-bs-target="#showModal{{ $pengajuan->id }}">
-                                                <i class="bi bi-info-circle"></i>
+                                <td style="border: 1px solid #dee2e6;" class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-primary btn-sm m-1" data-bs-toggle="modal"
+                                            data-bs-target="#showModal{{ $pengajuan->id }}">
+                                            <i class="bi bi-info-circle-fill"></i>
+                                        </button>
+
+                                        <a href="{{ route('fakultas-pengajuan.edit', $pengajuan->id) }}"
+                                            class="btn btn-warning btn-sm m-1">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+
+                                        <form id="deleteForm"
+                                            action="{{ route('fakultas-pengajuan.destroy', $pengajuan->id) }}"
+                                            method="POST" class="m-1">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-sm" id="delete">
+                                                <i class="fas fa-trash-alt"></i>
                                             </button>
+                                        </form>
+                                    </div>
 
-                                            <a href="{{ route('fakultas-pengajuan.edit', $pengajuan->id) }}"
-                                                class="btn btn-warning btn-sm m-1">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-
-                                            <form id="deleteForm"
-                                                action="{{ route('fakultas-pengajuan.destroy', $pengajuan->id) }}"
-                                                method="POST" class="m-1">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" class="btn btn-danger btn-sm" id="delete">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
+                                </td>
+                            </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="showModal{{ $pengajuan->id }}" tabindex="-1"
+                                aria-labelledby="showModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="showModalLabel">Detail Pengajuan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
-
-                                    </td>
-                                </tr>
-                                <!-- Modal -->
-                                <div class="modal fade" id="showModal{{ $pengajuan->id }}" tabindex="-1"
-                                    aria-labelledby="showModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="showModalLabel">Detail Pengajuan</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Isi dengan informasi detail pengajuan, misalnya -->
-                                                <p>Judul Kegiatan: {{ $pengajuan->judul_kegiatan }}</p>
-                                                <p>Total Anggaran: Rp. {{ number_format($pengajuan->total_anggaran) }}
-                                                </p>
-                                                <p>Waktu Pelaksanaan: {{ $pengajuan->waktu_pelaksanaan }}</p>
-                                                <p>Kriteria: {{ $pengajuan->kriteria }}</p>
-                                                <p>Status: {{ $pengajuan->status }}</p>
-                                                <!-- Tambahan informasi sesuai kebutuhan -->
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
+                                        <div class="modal-body">
+                                            <!-- Isi dengan informasi detail pengajuan, misalnya -->
+                                            <p>Judul Kegiatan: {{ $pengajuan->judul_kegiatan }}</p>
+                                            <p>Total Anggaran: Rp. {{ number_format($pengajuan->total_anggaran) }}
+                                            </p>
+                                            <p>Waktu Pelaksanaan: {{ $pengajuan->waktu_pelaksanaan }}</p>
+                                            <p>Kriteria: {{ $pengajuan->kriteria }}</p>
+                                            <p>Status: {{ $pengajuan->status }}</p>
+                                            <!-- Tambahan informasi sesuai kebutuhan -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <ul class="pagination pagination-circle pagination-outline justify-content-end">
-                    {{ $pengajuans->links('pagination::bootstrap-4') }}
-                </ul>
+                            </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+            @if ($pengajuans->isEmpty())
+                <div class="text-center" style="font-weight:">
+                    <h6>No data available in table</h6>
+                </div>
+            @endif
+            <ul class="pagination pagination-circle pagination-outline justify-content-end">
+                {{ $pengajuans->links('pagination::bootstrap-4') }}
+            </ul>
         </div>
+    </div>
     </div>
 @endsection
