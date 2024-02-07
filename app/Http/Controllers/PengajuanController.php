@@ -89,8 +89,8 @@ class PengajuanController extends Controller
 
     public function destroy($id)
     {
-        $transaksi = Pengajuan::where('id', $id)->first();
-        $transaksi->delete();
+        $pengajuan = Pengajuan::where('id', $id)->first();
+        $pengajuan->delete();
 
         return redirect()
             ->route('fakultas-pengajuan')

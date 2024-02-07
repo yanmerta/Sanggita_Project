@@ -58,7 +58,8 @@
                             <div class="input-group input-group-sm">
                                 <select class="form-select" name="filter_status">
                                     <option value="" selected disabled>Filter by Status</option>
-                                    <option value="diusulkan" {{ request('filter_status') == 'diusulkan' ? 'selected' : '' }}>
+                                    <option value="diusulkan"
+                                        {{ request('filter_status') == 'diusulkan' ? 'selected' : '' }}>
                                         Diusulkan
                                     </option>
                                     <option value="ditolak" {{ request('filter_status') == 'ditolak' ? 'selected' : '' }}>
@@ -118,7 +119,7 @@
                                     <div class="d-flex justify-content-center">
                                         <button type="button" class="btn btn-primary btn-sm m-1" data-bs-toggle="modal"
                                             data-bs-target="#showModal{{ $pengajuan->id }}">
-                                            <i class="bi bi-info-circle"></i>
+                                            <i class="bi bi-info-circle-fill"></i>
                                         </button>
 
                                         <a href="{{ route('fakultas-pengajuan.edit', $pengajuan->id) }}"
@@ -170,6 +171,11 @@
                     </tbody>
                 </table>
             </div>
+            @if ($pengajuans->isEmpty())
+                <div class="text-center" style="font-weight:">
+                    <h6>No data available in table</h6>
+                </div>
+            @endif
             <ul class="pagination pagination-circle pagination-outline justify-content-end">
                 {{ $pengajuans->links('pagination::bootstrap-4') }}
             </ul>
