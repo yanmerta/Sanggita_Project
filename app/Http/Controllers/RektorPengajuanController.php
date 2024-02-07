@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\rektor;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 
-class PengajuanController extends Controller
+class RektorPengajuanController extends Controller
 {
     /**
      * Display a listing of the resource.

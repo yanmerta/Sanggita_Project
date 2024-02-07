@@ -10,7 +10,7 @@ class PengajuanController extends Controller
     public function index()
     {
         $pengajuans = Pengajuan::paginate(5);
-        $title = 'List of Pengajuans'; // Add this line to define $title
+        $title = 'List of Pengajuans Fakultas'; // Add this line to define $title
 
         return view('fakultas.pengajuan.index', compact('pengajuans', 'title'));
     }
@@ -69,8 +69,8 @@ class PengajuanController extends Controller
 
     public function destroy($id)
     {
-        $transaksi = Pengajuan::where('id', $id)->first();
-        $transaksi->delete();
+        $pengajuan = Pengajuan::where('id', $id)->first();
+        $pengajuan->delete();
 
         return redirect()
             ->route('fakultas-pengajuan')

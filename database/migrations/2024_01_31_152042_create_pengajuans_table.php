@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('waktu_pelaksanaan');
             $table->string('kriteria');
             $table->string('status');
-            $table->softDeletes(); 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

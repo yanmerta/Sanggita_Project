@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelaporan;
 use Illuminate\Http\Request;
 
 class PelaporanController extends Controller
@@ -10,22 +11,13 @@ class PelaporanController extends Controller
      * Display a listing of the resource.
      */
 
-    public function rektor_pelaporan()
+    public function index()
     {
-        $data = array(
-            'title' => 'Pelaporan Rektor',
-        );
+        $pelaporans = Pelaporan::paginate(5);
+        $title = 'List of Pelaporans Anggaran Fakultas'; // Add this line to define $title
 
-        return view('rektor.pelaporan.index', $data);
-    }
+        return view('fakultas.pelaporan.anggaran.index', compact('pelaporans', 'title'));
 
-    public function fakultas_pelaporan()
-    {
-        $data = array(
-            'title' => 'Pelaporan Anggaran Fakultas',
-        );
-
-        return view('fakultas.pelaporan.pelaporan-anggaran.index', $data);
     }
 
     public function fakultas_pelaporan_kegiatan()
@@ -34,63 +26,79 @@ class PelaporanController extends Controller
             'title' => 'Pelaporan Kegiatan Fakultas',
         );
 
-        return view("fakultas.pelaporan.pelaporan-kegiatan.index", $data);
+        return view("fakultas.pelaporan.kegiatan.index", $data);
     }
 
     public function fakultas_pelaporan_seminar()
     {
-        $data = array(
-            'title' => 'Pelaporan Seminar Fakultas',
-        );
+        $pelaporans = Pelaporan::paginate(5);
+        $title = 'List of Pelaporans Anggaran Seminar Fakultas'; // Add this line to define $title
 
-        return view('fakultas.pelaporan.pelaporan-anggaran.seminar', $data);
+        return view('fakultas.pelaporan.anggaran.seminar.seminar', compact('pelaporans', 'title'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $title = 'Create Pelaporan Seminar';
+        return view('fakultas.pelaporan.anggaran.seminar.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // Melakukan validasi form
+        $validatedData = $request->validate([
+            'item'         => 'required|string|max:255',
+            'satuan'       => 'required|string',
+            'volume'       => 'required|string',
+            'harga_satuan' => 'required|numeric',
+            'total'        => 'required|numeric',
+        ]);
+
+        // Simpan data ke database
+        Pelaporan::create($validatedData);
+
+        // Redirect atau berikan respons yang sesuai
+        return redirect()
+            ->route('fakultas-pelaporan-seminar')
+            ->with('success', 'Pelaporan anggaran seminar berhasil dicreate.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $pelaporan = Pengajuan::findOrFail($id);
+
+        $title = 'Edit Pengajuan'; // Pastikan variabel $title telah didefinisikan
+        return view('fakultas.pengajuan.edit', compact('pengajuan', 'title'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'judul_kegiatan' => 'required|string|max:255',
+            'total_anggaran' => 'required|numeric',
+            'waktu_pelaksanaan' => 'required|date',
+            'kriteria' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
+        ]);
+
+        $pengajuan = Pengajuan::findOrFail($id);
+        $pengajuan->update($request->all());
+
+        return redirect()
+            ->route('fakultas-pengajuan')
+            ->with('success', 'Pengajuan berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $pelaporan = Pelaporan::where('id', $id)->first();
+        $pelaporan->delete();
+
+        return redirect()
+            ->route('fakultas-pelaporan-seminar')
+            ->with(
+                'success',
+                'Data Layanan Pengajuan Anggaran berhasil di hapus.'
+            );
     }
 }

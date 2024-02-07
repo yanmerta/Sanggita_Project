@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\rektor;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Pengajuan;
+use App\Models\Pelaporan;
 use Illuminate\Http\Request;
 
-class PengajuanController extends Controller
+class RektorPelaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pengajuans = Pengajuan::paginate(5);
-        $title = 'List of Pengajuans Rektor'; // Add this line to define $title
+        $pelaporans = Pelaporan::paginate(5);
+        $title = 'List of Pelaporans Rektor'; // Add this line to define $title
 
-        return view('rektor.pengajuan.index', compact('pengajuans', 'title'));
+        return view('rektor.pelaporan.index', compact('pelaporans', 'title'));
+
     }
 
     /**
