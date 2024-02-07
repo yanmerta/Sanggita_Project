@@ -26,7 +26,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');

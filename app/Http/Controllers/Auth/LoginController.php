@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         $viewData = [
             'title' => 'Login',
-            'data'  => $userData,
+            'data' => $userData,
         ];
 
         return view('auth.login', $viewData);
@@ -27,7 +27,9 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('success','kamu berhasil logout');
+        return redirect()
+            ->route('login')
+            ->with('success', 'kamu berhasil logout');
     }
     /**
      * Show the form for creating a new resource.
@@ -43,19 +45,21 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email'     => 'required',
-            'password'  => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
         $data = [
-            'email'     => $request->email,
-            'password'  => $request->password,
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
         if (Auth::attempt($data)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->route('login')->with('failed', 'Email atau Password Salah');
+            return redirect()
+                ->route('login')
+                ->with('failed', 'Email atau Password Salah');
         }
     }
 
