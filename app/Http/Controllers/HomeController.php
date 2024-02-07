@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pengajuan;
 
 class HomeController extends Controller
 {
@@ -11,16 +12,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = array(
-            'title' => 'Dashboard',
-        );
+        $title = 'Dashboard';
 
-        return view('dashboard.dashboard', $data);
+        $jumlahPengajuan = Pengajuan::count();
+
+        return view('dashboard.dashboard', [
+            'jumlahPengajuan' => $jumlahPengajuan,
+            'title' => $title,
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         //
