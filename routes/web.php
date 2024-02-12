@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
@@ -32,6 +32,14 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/theme',[ThemeController::class, 'index'])->name('theme');
+
+Route::get('locale/{locale}', function ($locale){
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale');
 
 // Route::get('/forgot-password', [LoginController::class, 'forgot_password'])->name('forgot-password');
 // Route::post('/forgot-password-act', [LoginController::class, 'forgot_password_act'])->name('forgot-password-act');
