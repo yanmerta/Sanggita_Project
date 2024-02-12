@@ -40,7 +40,7 @@
             <!--begin::Content-->
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <!--begin::Logo-->
-                <img alt="Logo" src="/html/demo1/dist/assets/media/logos/logo.png" class="h-70px logo" />
+                <img alt="Logo" src="/html/demo1/dist/assets/media/logos/logo.png" class="h-100px logo" />
                 <div class="text-center mt-2">
                     <p class="text-muted" style="font-size: 25px; margin-bottom: 8px;">SANGGITA</p>
                 </div>

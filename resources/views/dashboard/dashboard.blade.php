@@ -51,7 +51,7 @@
                                     <!--begin::Title-->
                                     <h3 class="card-title align-items-start flex-column">
                                         <span class="card-label fw-bolder fs-4 text-gray-8000">Pelaporan:</span>
-                                        <span class="text-danger fs-4 ms-2">2</span>
+                                        <span class="text-danger fs-4 ms-2">{{ $jumlahPelaporan }}</span>
                                     </h3>
                                 </div>
                             </div>

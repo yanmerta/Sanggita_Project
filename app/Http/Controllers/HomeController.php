@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengajuan;
+use App\Models\Pelaporan;
 
 class HomeController extends Controller
 {
@@ -15,9 +16,11 @@ class HomeController extends Controller
         $title = 'Dashboard';
 
         $jumlahPengajuan = Pengajuan::count();
+        $jumlahPelaporan = Pelaporan::count();
 
         return view('dashboard.dashboard', [
             'jumlahPengajuan' => $jumlahPengajuan,
+            'jumlahPelaporan' => $jumlahPelaporan,
             'title' => $title,
         ]);
     }

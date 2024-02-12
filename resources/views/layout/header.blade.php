@@ -1616,7 +1616,7 @@
                                 <!--end::Items-->
                                 <!--begin::View more-->
                                 <div class="py-3 text-center border-top">
-                                    <a href="/html/demo1/dist/pages/user-profile/activity.html"
+                                    <a href="{{ route('admin.profil') }}"
                                         class="btn btn-color-gray-600 btn-active-color-primary">View All
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                         <span class="svg-icon svg-icon-5">
@@ -1689,12 +1689,12 @@
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bolder d-flex align-items-center fs-5">Nova Artadi
+                                    <div class="fw-bolder d-flex align-items-center fs-5">{{ auth()->user()->name }}
                                         <span
                                             class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
                                     </div>
                                     <a href="#"
-                                        class="fw-bold text-muted text-hover-primary fs-7">putunova0123@gmail.com</a>
+                                        class="fw-bold text-muted text-hover-primary fs-9">{{ auth()->user()->email }}</a>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -1705,7 +1705,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="/html/demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
+                            <a href="{{ route('admin.profil') }}" class="menu-link px-5">My Profile</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->

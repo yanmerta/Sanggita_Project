@@ -10,6 +10,7 @@ use App\Http\Controllers\RealisasiController;
 use App\Http\Controllers\RektorPelaporanController;
 use App\Http\Controllers\RektorPengajuanController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
@@ -49,15 +50,21 @@ Route::post('/register', [RegisterController::class, 'store'])->name(
 Route::group(
     ['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'],
     function () {
+        Route::get('/profil', [ProfilController::class, 'index'])->name(
+            'profil'
+        );
+        Route::post('/profil-update/{id}', [
+            ProfilController::class,
+            'update',
+        ])->name('profil-update');
+
         Route::get('/dashboard', [HomeController::class, 'index'])->name(
             'dashboard'
         );
-
         Route::get('/fakultas-persetujuan', [
             PersetujuanController::class,
             'fakultas_persetujuan',
         ])->name('fakultas-persetujuan');
-
         // Pengajuan
         Route::get('/fakultas-pengajuan', [
             PengajuanController::class,
@@ -123,7 +130,6 @@ Route::group(
             RealisasiController::class,
             'fakultas_realisasi',
         ])->name('fakultas-realisasi');
-
         // Rektor
         // Pengajuan
         Route::get('/rektor-pengajuan', [
@@ -136,7 +142,6 @@ Route::group(
             PersetujuanController::class,
             'rektor_persetujuan',
         ])->name('rektor-persetujuan');
-
         // Realisasi
         Route::get('/rektor-realisasi', [
             RealisasiController::class,
