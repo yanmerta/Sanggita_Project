@@ -91,12 +91,12 @@
                     <thead>
                         <tr class="fw-bolder text-muted bg-light">
                             <th style="border: 1px solid #dee2e6; text-align:center">No.</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center">Judul Kegiatan</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center">Total Anggaran</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center">Waktu Pelaksanaan</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center">Kriteria</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center">Status</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center"class="text-center">Aksi</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.judul_kegiatan') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.total_anggaran') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.waktu_pelaksanaan') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.kriteria') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.status') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center"class="text-center">{{ __('users.Aksi') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -152,7 +152,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <!-- Isi dengan informasi detail pengajuan, misalnya -->
-                                            <p>Judul Kegiatan: {{ $pengajuan->judul_kegiatan }}</p>
+                                            <p>{{ __('users.judul_kegiatan') }}: {{ $pengajuan->judul_kegiatan }}</p>
                                             <p>Total Anggaran: Rp. {{ number_format($pengajuan->total_anggaran) }}
                                             </p>
                                             <p>Waktu Pelaksanaan: {{ $pengajuan->waktu_pelaksanaan }}</p>

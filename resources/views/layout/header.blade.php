@@ -1716,35 +1716,48 @@
                             <a href="#" class="menu-link px-5">
                                 <span class="menu-title position-relative">Language
                                     <span
-                                        class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
+                                        class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">Indonesia
                                         <img class="w-15px h-15px rounded-1 ms-2"
-                                            src="/html/demo1/dist/assets/media/flags/united-states.svg"
+                                            src="/html/demo1/dist/assets/media/flags/indonesia.svg"
                                             alt="" /></span></span>
                             </a>
                             <!--begin::Menu sub-->
                             <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="/html/demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
+                                    <a href="{{ route('locale', ['locale' => 'id']) }}"
+                                        class="menu-link d-flex px-5" class="menu-link d-flex px-5"
+                                        style="{{ session()->get('locale') == 'id' ? 'background-color: rgb(255,209,209)' : '' }}">
+                                        <span class="symbol symbol-20px me-4">
+                                            <img class="rounded-1"
+                                                src="/html/demo1/dist/assets/media/flags/indonesia.svg"
+                                                alt="" />
+                                        </span>Indonesia</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="{{ route('locale', ['locale' => 'en']) }}"
+                                        class="menu-link d-flex px-5"
+                                        style="{{ session()->get('locale') == 'en' ? 'background-color: rgb(255,209,209)' : '' }}">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
                                                 src="/html/demo1/dist/assets/media/flags/united-states.svg"
                                                 alt="" />
                                         </span>English</a>
                                 </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="/html/demo1/dist/account/settings.html" class="menu-link d-flex px-5">
+                                    <a href="{{ route('locale', ['locale' => 'jp']) }}"
+                                        class="menu-link d-flex px-5"
+                                        style="{{ session()->get('locale') == 'jp' ? 'background-color: rgb(255,209,209)' : '' }}">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
-                                                src="/html/demo1/dist/assets/media/flags/spain.svg"
+                                                src="/html/demo1/dist/assets/media/flags/japan.svg"
                                                 alt="" />
-                                        </span>Spanish</a>
+                                        </span>Japan</a>
                                 </div>
                                 <!--end::Menu item-->
-                                <!--begin::Menu item-->
+                                {{-- <!--begin::Menu item-->
                                 <div class="menu-item px-3">
                                     <a href="/html/demo1/dist/account/settings.html" class="menu-link d-flex px-5">
                                         <span class="symbol symbol-20px me-4">
@@ -1773,7 +1786,7 @@
                                                 alt="" />
                                         </span>French</a>
                                 </div>
-                                <!--end::Menu item-->
+                                <!--end::Menu item--> --}}
                             </div>
                             <!--end::Menu sub-->
                         </div>
