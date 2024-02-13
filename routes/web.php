@@ -24,7 +24,7 @@ use App\Http\Controllers\ProfilController;
 */
 
 // Route::get('/', function () {
-//     return view('auth.login');
+//     return view('Welcome');
 // });
 
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');

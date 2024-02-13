@@ -14,6 +14,39 @@
         <!--end::Logo-->
     </div>
     <!--end::Brand-->
+    <div class="text-center mt-2">
+        <div class="shadow p-3 mb-5 bg-black rounded">
+            <p class="text-muted" style="font-size: 12px;" id="currentDateTime"></p>
+            <p class="text-muted" style="font-size: 15px;">Selamat Datang, WAYAN MERTA</p>
+            <p class="text-muted" style="font-size: 13px;">Operator Fakultas Teknologi </p>
+            <p class="text-muted" style="font-size: 13px;">Informasi dan Sains</p>
+        </div>
+    </div>
+    <script>
+        function updateDateTime() {
+            var now = new Date();
+            var day = now.toLocaleDateString('en-US', {
+                weekday: 'long'
+            });
+            var date = now.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            var time = now.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: true
+            });
+
+            document.getElementById('currentDateTime').innerHTML = day + ', ' + date + ' ' + time;
+
+            setTimeout(updateDateTime, 1000); // Update every 1000 milliseconds (1 second)
+        }
+
+        updateDateTime(); // Initial call to display date and time
+    </script>
 
     <!--begin::Aside menu-->
     <div class="aside-menu flex-column-fluid">

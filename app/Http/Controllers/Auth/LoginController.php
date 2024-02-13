@@ -55,7 +55,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($data)) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard')->with('success', 'Selamat datang! Anda berhasil login.');
         } else {
             return redirect()
                 ->route('login')
