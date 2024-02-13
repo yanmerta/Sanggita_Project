@@ -31,21 +31,21 @@
                     <div class="mb-3">
                         <label for="volume" class="form-label">Volume</label>
                         <input type="number" class="form-control" id="volume" name="volume"
-                            placeholder="Masukkan Volume" required>
+                            placeholder="Masukkan Volume" required onchange="hitungTotal()">
                     </div>
 
                     <!-- Harga Satuan -->
                     <div class="mb-3">
                         <label for="hargaSatuan" class="form-label">Harga Satuan</label>
                         <input type="number" class="form-control" id="hargaSatuan" name="harga_satuan"
-                            placeholder="Masukkan Harga Satuan" required>
+                            placeholder="Masukkan Harga Satuan" required onchange="hitungTotal()">
                     </div>
 
                     <!-- Total -->
                     <div class="mb-3">
                         <label for="total" class="form-label">Total</label>
                         <input type="number" class="form-control" id="total" name="total"
-                            placeholder="Masukkan Total" required>
+                            placeholder="Masukkan Total" required readonly>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -54,4 +54,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function hitungTotal() {
+            var volume = parseFloat(document.getElementById('volume').value);
+            var hargaSatuan = parseFloat(document.getElementById('hargaSatuan').value);
+            var total = volume * hargaSatuan;
+
+            document.getElementById('total').value = total.toFixed(2);
+        }
+    </script>
 @endsection
