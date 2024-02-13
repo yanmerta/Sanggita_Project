@@ -6,11 +6,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelaporanController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PersetujuanController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RealisasiController;
 use App\Http\Controllers\RektorPelaporanController;
 use App\Http\Controllers\RektorPengajuanController;
+use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfilController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/theme', [ThemeController::class, 'index'])->name('theme');
+Route::get('/', [ThemeController::class, 'readCookie']);
+Route::post('/cookie/create/update', [ThemeController::class, 'createAndUpdate'])->name('create-update');
 
 Route::get('locale/{locale}', function ($locale) {
     app()->setLocale($locale);
