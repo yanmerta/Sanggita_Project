@@ -36,23 +36,21 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-<<<<<<< HEAD
+// Reset Password
+Route::get('/forgot-password', [LoginController::class, 'forgot_password'])->name('forgot-password');
+Route::post('/forgot-password-act', [LoginController::class, 'forgot_password_act'])->name('forgot-password-act');
+Route::get('/validasi-forgot-password/{token}', [LoginController::class, 'validasi_forgot_password'])->name('validasi-forgot-password');
+Route::post('/validasi-forgot-password-act', [LoginController::class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
+
 Route::get('/', [ThemeController::class, 'readCookie']);
 Route::post('/cookie/create/update', [ThemeController::class, 'createAndUpdate'])->name('create-update');
-=======
-// Route::get('/theme', [ThemeController::class, 'index'])->name('theme');
->>>>>>> b36c92e82cf9bef0cec20cbdbdd1b34c21f52626
 
+// Multi Bahasa
 Route::get('locale/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
     return redirect()->back();
 })->name('locale');
-
-// Route::get('/forgot-password', [LoginController::class, 'forgot_password'])->name('forgot-password');
-// Route::post('/forgot-password-act', [LoginController::class, 'forgot_password_act'])->name('forgot-password-act');
-// Route::get('/validasi-forgot-password/{token}', [LoginController::class, 'validasi_forgot_password'])->name('validasi-forgot-password');
-// Route::post('/validasi-forgot-password-act', [LoginController::class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
 
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register');

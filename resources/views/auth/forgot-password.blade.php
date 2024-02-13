@@ -3,7 +3,7 @@
 <!--begin::Head-->
 
 <head>
-    <base href="../../../">
+    <base href="/html/demo1/dist/">
     <title>{{ $title }}</title>
     <meta charset="utf-8" />
     <meta name="description"
@@ -30,81 +30,55 @@
 <!--end::Head-->
 <!--begin::Body-->
 
-<body class="bg-body">
+<body id="kt_body" class="bg-dark">
     <!--begin::Main-->
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
-        <!--begin::Authentication - Sign-in -->
+        <!--begin::Authentication - Password reset -->
         <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
-            style="background-image: url(assets/media/illustrations/sketchy-1/14.png">
+            style="background-image: url(assets/media/illustrations/sketchy-1/14-dark.png">
             <!--begin::Content-->
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <!--begin::Logo-->
-                <img alt="Logo" src="/html/demo1/dist/assets/media/logos/logo.png" class="h-100px logo" />
-                <div class="text-center mt-2">
-                    <p class="text-muted" style="font-size: 25px; margin-bottom: 8px;">SANGGITA</p>
-                </div>
+                <a href="/html/demo1/dist/index.html" class="mb-12">
+                    <img alt="Logo" src="/html/demo1/dist/assets/media/logos/logo-2.svg" class="h-40px" />
+                </a>
                 <!--end::Logo-->
                 <!--begin::Wrapper-->
                 <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                     <!--begin::Form-->
-                    <form class="form w-100" method="POST" action="{{ route('login.store') }}">
-                        {{-- <form action="{{ route('login-proses') }}" method="POST"> --}}
+                    <form class="form w-100" method="POST" action="{{ route('forgot-password-act') }}">
                         @csrf
                         <!--begin::Heading-->
                         <div class="text-center mb-10">
                             <!--begin::Title-->
-                            <h1 class="text-dark mb-3">Sign In to Sanggita</h1>
+                            <h1 class="text-dark mb-3">Forgot Password ?</h1>
                             <!--end::Title-->
                             <!--begin::Link-->
-                            <div class="text-gray-400 fw-bold fs-4">New Here?
-                                <a href="{{ route('register') }}" class="link-primary fw-bolder">Create an Account</a>
-                            </div>
+                            <div class="text-gray-400 fw-bold fs-4">Enter your email to reset your password.</div>
                             <!--end::Link-->
                         </div>
-                        <!--begin::Heading-->
-                        <!--begin::Input group-->
                         <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="form-label fs-6 fw-bolder text-dark">Email</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input class="form-control" type="email" name="email" placeholder="Email" />
-                            <!--end::Input-->
+                            <label class="form-label fw-bolder text-gray-900 fs-6">Email</label>
+                            <input class="form-control" type="email" placeholder="Email" name="email" />
                         </div>
                         @error('email')
                             <small>{{ $message }}</small>
                         @enderror
                         <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-10">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-stack mb-2">
-                                <!--begin::Label-->
-                                <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
-                                <!--end::Label-->
-                                <!--begin::Link-->
-                                <a href="{{ route('forgot-password') }}" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
-                                <!--end::Link-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Input-->
-                            <input class="form-control" type="password" name="password" placeholder="Password" />
-                            <!--end::Input-->
-                        </div>
-                        @error('password')
-                            <small>{{ $message }}</small>
-                        @enderror
-                        <!--end::Input group-->
                         <!--begin::Actions-->
-                        <div class="text-center">
-                            <!--begin::Submit button-->
-                            {{-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> --}}
-                            <button type="submit" class="btn btn-primary btn-block w-100 mb-5">
-                                <span class="indicator-label">Sign In</span>
+                        <div class="d-flex flex-wrap justify-content-center pb-lg-0">
+                            {{-- <button type="submit" class="btn btn-primary btn-block w-100 mb-5">
+                                    <span class="indicator-label">Sign In</span>
+                                    <span class="indicator-progress">Please wait...
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button> --}}
+                            <button type="submit" class="btn btn-primary btn-block fw-bolder me-4">
+                                <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
+                            <a href="{{ route('login') }}" class="btn btn-lg btn-light-primary fw-bolder">Cancel</a>
                         </div>
                         <!--end::Actions-->
                     </form>
@@ -112,19 +86,33 @@
                 </div>
                 <!--end::Wrapper-->
             </div>
+            <!--end::Content-->
+            <!--begin::Footer-->
+            <div class="d-flex flex-center flex-column-auto p-10">
+                <!--begin::Links-->
+                <div class="d-flex align-items-center fw-bold fs-6">
+                    <a href="https://keenthemes.com" class="text-muted text-hover-primary px-2">About</a>
+                    <a href="mailto:support@keenthemes.com" class="text-muted text-hover-primary px-2">Contact</a>
+                    <a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2">Contact Us</a>
+                </div>
+                <!--end::Links-->
+            </div>
+            <!--end::Footer-->
         </div>
-        <!--end::Authentication - Sign-in-->
+        <!--end::Authentication - Password reset-->
     </div>
+    <!--end::Root-->
+    <!--end::Main-->
+    <!--begin::Javascript-->
     <script>
-        var hostUrl = "/html/demo1/dist/assets/";
+        var hostUrl = "assets/";
     </script>
     <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="/html/demo1/dist/assets/plugins/global/plugins.bundle.js"></script>
     <script src="/html/demo1/dist/assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="/html/demo1/dist/assets/js/custom/authentication/sign-in/general.js"></script>
-    <!--end::Page Custom Javascript-->
+    <script src="/html/demo1/dist/assets/js/custom/authentication/password-reset/password-reset.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--end::Javascript-->
     @if ($message = Session::get('success'))
@@ -138,6 +126,9 @@
             Swal.fire('{{ $message }}');
         </script>
     @endif
+    <!--end::Page Custom Javascript-->
+    <!--end::Javascript-->
 </body>
+<!--end::Body-->
 
 </html>
