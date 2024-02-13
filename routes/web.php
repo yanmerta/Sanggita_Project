@@ -36,8 +36,12 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+<<<<<<< HEAD
 Route::get('/', [ThemeController::class, 'readCookie']);
 Route::post('/cookie/create/update', [ThemeController::class, 'createAndUpdate'])->name('create-update');
+=======
+// Route::get('/theme', [ThemeController::class, 'index'])->name('theme');
+>>>>>>> b36c92e82cf9bef0cec20cbdbdd1b34c21f52626
 
 Route::get('locale/{locale}', function ($locale) {
     app()->setLocale($locale);
@@ -61,13 +65,21 @@ Route::post('/register', [RegisterController::class, 'store'])->name(
 Route::group(
     ['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'],
     function () {
-        Route::get('/profil', [ProfilController::class, 'index'])->name(
-            'profil'
-        );
-        Route::post('/profil-update/{id}', [
-            ProfilController::class,
+        // Route::get('/profil', [ProfilController::class, 'index'])->name(
+        //     'profil'
+        // );
+        // Route::post('/update-profil/{id}', [
+        //     ProfilController::class,
+        //     'updateprofil',
+        // ])->name('update-profil');
+        Route::get('/profile', [
+            App\Http\Controllers\ProfilController::class,
+            'index',
+        ])->name('profile.index');
+        Route::patch('/profile/{id}', [
+            App\Http\Controllers\ProfilController::class,
             'update',
-        ])->name('profil-update');
+        ])->name('profile.update');
 
         Route::get('/dashboard', [HomeController::class, 'index'])->name(
             'dashboard'
