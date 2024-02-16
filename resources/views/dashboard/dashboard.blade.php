@@ -9,52 +9,61 @@
                 <div id="kt_content_container" class="container-xxl">
                     <div class="row gy-5 g-xl-10">
                         <div class="col-md-3">
-                            <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
-                                <!--begin::Header-->
-                                <div class="card-title align-items-start flex-column flex-nowrap pt-5">
-                                    <!--begin::Title-->
-                                    <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bolder fs-4 text-gray-800">Pengajuan:</span>
-                                        <span class="text-danger fs-4 ms-2">{{ $jumlahPengajuan }}</span>
-                                    </h3>
+                            <a href="{{ route('admin.fakultas-pengajuan') }}">
+                                <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
+                                    <!--begin::Header-->
+                                    <div class="card-title align-items-start flex-column flex-nowrap pt-5">
+                                        <!--begin::Title-->
+                                        <h3 class="card-title align-items-start flex-column">
+                                            <span class="card-label fw-bolder fs-4 text-gray-800">Pengajuan:</span>
+                                            <span class="text-danger fs-4 ms-2">{{ $jumlahPengajuan }}</span>
+                                        </h3>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="{{ route('admin.fakultas-persetujuan') }}">
+                                <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
+                                    <!--begin::Header-->
+                                    <div class="card-title align-items-start flex-column flex-nowrap pt-5">
+                                        <!--begin::Title-->
+                                        <h3 class="card-title align-items-start flex-column">
+                                            <span class="card-label fw-bolder fs-4 text-gray-800">Persetujuan:</span>
+                                            <span class="text-danger fs-4 ms-2">2</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
-                                <!--begin::Header-->
-                                <div class="card-title align-items-start flex-column flex-nowrap pt-5">
-                                    <!--begin::Title-->
-                                    <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bolder fs-4 text-gray-800">Persetujuan:</span>
-                                        <span class="text-danger fs-4 ms-2">2</span>
-                                    </h3>
+                            <a href="{{ route('admin.fakultas-realisasi') }}">
+                                <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
+                                    <!--begin::Header-->
+                                    <div class="card-title align-items-start flex-column flex-nowrap pt-5">
+                                        <!--begin::Title-->
+                                        <h3 class="card-title align-items-start flex-column">
+                                            <span class="card-label fw-bolder fs-4 text-gray-800">Realisasi:</span>
+                                            <span class="text-danger fs-4 ms-2">2</span>
+                                        </h3>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
-                                <!--begin::Header-->
-                                <div class="card-title align-items-start flex-column flex-nowrap pt-5">
-                                    <!--begin::Title-->
-                                    <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bolder fs-4 text-gray-800">Realisasi:</span>
-                                        <span class="text-danger fs-4 ms-2">2</span>
-                                    </h3>
+                            <a href="{{ route('admin.fakultas-pelaporan') }}">
+                                <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
+                                    <!--begin::Header-->
+                                    <div class="card-title align-items-start flex-column flex-nowrap pt-5">
+                                        <!--begin::Title-->
+                                        <h3 class="card-title align-items-start flex-column">
+                                            <span class="card-label fw-bolder fs-4 text-gray-8000">Pelaporan:</span>
+                                            <span class="text-danger fs-4 ms-2">{{ $jumlahPelaporan }}</span>
+                                        </h3>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card card-flush h-xl-80" style="background-color: #cde7fde8">
-                                <!--begin::Header-->
-                                <div class="card-title align-items-start flex-column flex-nowrap pt-5">
-                                    <!--begin::Title-->
-                                    <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bolder fs-4 text-gray-8000">Pelaporan:</span>
-                                        <span class="text-danger fs-4 ms-2">{{ $jumlahPelaporan }}</span>
-                                    </h3>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <!--end::Row-->
                         <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
@@ -65,24 +74,16 @@
                                     <!--begin::Header-->
                                     <div class="card-header pt-7 mb-2">
                                         <!--begin::Title-->
-                                        {{-- <h3 class="card-title text-gray-800 fw-bolder">Transaction History</h3> --}}
-                                        <a href="#" class="btn btn-dark flex-shrink-0 me-2" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_upgrade_plan">Pengajuan</a>
-                                        <a href="#" class="btn btn-dark flex-shrink-0 me-2" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_upgrade_plan">Persetujuan</a>
-                                        <a href="#" class="btn btn-dark flex-shrink-0 me-2" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_upgrade_plan">Realisasi</a>
-                                        <a href="#" class="btn btn-dark flex-shrink-0 me-2" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_upgrade_plan">Pelaporan</a>
+                                        <h3 class="card-title text-gray-800 fw-bolder">Grafik Dashboard</h3>
                                     </div>
                                     <!--end::Header-->
                                     <!--begin::Card body-->
                                     <div class="card-body d-flex justify-content-between flex-column pt-0 pb-1 px-0">
-                                        <div id="kt_charts_widget_26" class="min-h-auto ps-4 pe-6"
-                                            data-kt-chart-info="Transactions" style="height: 300px"></div>
-                                        <!--end::Chart-->
+                                        <canvas id="dashboardChart" style="height: 300px"></canvas>
                                     </div>
                                     <!--end::Card body-->
+
+
                                 </div>
                                 <!--end::Chart widget 26-->
                             </div>
@@ -90,9 +91,75 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="card-footer">
+            </div>
+            {{-- <div class="card-footer">
                 Footer
             </div> --}}
-            </div>
         </div>
-    @endsection
+    </div>
+    <!-- Pemanggilan script jQuery, Select2, dan Chart.js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add these lines to include Chart.js -->
+
+
+    <script>
+        $(document).ready(function() {
+            // Inisialisasi Select2 untuk elemen dengan class 'select2'
+            $('.select2').select2();
+
+            // Get the data from your PHP variables
+            var dataBulanan = @json($dataBulanan);
+
+            // Log data untuk memeriksanya di konsol
+            console.log(dataBulanan);
+
+            // Inisialisasi Chart.js setelah data siap
+            var ctx = document.getElementById('dashboardChart').getContext('2d');
+            var dashboardChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(dataBulanan),
+                    datasets: [{
+                            label: 'Pengajuan',
+                            data: Object.values(dataBulanan).map(data => data.pengajuan),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                        },
+                        {
+                            label: 'Persetujuan',
+                            data: Object.values(dataBulanan).map(data => data.persetujuan),
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                        },
+                        {
+                            label: 'Realisasi',
+                            data: Object.values(dataBulanan).map(data => data.realisasi),
+                            backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                            borderColor: 'rgba(255, 205, 86, 1)',
+                            borderWidth: 1,
+                        },
+                        {
+                            label: 'Pelaporan',
+                            data: Object.values(dataBulanan).map(data => data.pelaporan),
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+        });
+    </script>
+@endsection
