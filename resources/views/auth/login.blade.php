@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--begin::Head-->
 
 <head>
     <base href="../../../">
@@ -19,114 +18,81 @@
     <meta property="og:site_name" content="Keenthemes | Metronic" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
     <link rel="shortcut icon" href="/html/demo1/dist/assets/media/logos/favicon.ico" />
-    <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="/html/demo1/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="/html/demo1/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Global Stylesheets Bundle-->
 </head>
-<!--end::Head-->
-<!--begin::Body-->
 
-<body class="bg-body">
-    <!--begin::Main-->
-    <!--begin::Root-->
+<body class="bg-dark">
     <div class="d-flex flex-column flex-root">
-        <!--begin::Authentication - Sign-in -->
-        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
-            style="background-image: url(assets/media/illustrations/sketchy-1/14.png">
-            <!--begin::Content-->
+        <div
+            class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed">
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-                <!--begin::Logo-->
+                {{-- Logo --}}
                 <img alt="Logo" src="/html/demo1/dist/assets/media/logos/logo.png" class="h-100px logo" />
                 <div class="text-center mt-2">
                     <p class="text-muted" style="font-size: 25px; margin-bottom: 8px;">SANGGITA</p>
                 </div>
-                <!--end::Logo-->
-                <!--begin::Wrapper-->
+                {{-- Content --}}
                 <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-                    <!--begin::Form-->
+                    {{-- Form --}}
                     <form class="form w-100" method="POST" action="{{ route('login.store') }}">
-                        {{-- <form action="{{ route('login-proses') }}" method="POST"> --}}
                         @csrf
-                        <!--begin::Heading-->
+                        {{-- Heading --}}
                         <div class="text-center mb-10">
-                            <!--begin::Title-->
                             <h1 class="text-dark mb-3">Sign In to Sanggita</h1>
-                            <!--end::Title-->
-                            <!--begin::Link-->
                             <div class="text-gray-400 fw-bold fs-4">New Here?
                                 <a href="{{ route('register') }}" class="link-primary fw-bolder">Create an Account</a>
                             </div>
-                            <!--end::Link-->
                         </div>
-                        <!--begin::Heading-->
-                        <!--begin::Input group-->
+                        {{-- Input --}}
                         <div class="fv-row mb-10">
-                            <!--begin::Label-->
                             <label class="form-label fs-6 fw-bolder text-dark">Email</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
                             <input class="form-control" type="email" name="email" placeholder="Email" />
-                            <!--end::Input-->
                         </div>
                         @error('email')
                             <small>{{ $message }}</small>
                         @enderror
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-10">
-                            <!--begin::Wrapper-->
+                        <div class="fv-row mb-10" data-kt-password-meter="true">
                             <div class="d-flex flex-stack mb-2">
-                                <!--begin::Label-->
                                 <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
-                                <!--end::Label-->
-                                <!--begin::Link-->
-                                <a href="{{ route('forgot-password') }}" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
-                                <!--end::Link-->
+                                <a href="{{ route('forgot-password') }}" class="link-primary fs-6 fw-bolder">Forgot
+                                    Password ?</a>
                             </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Input-->
-                            <input class="form-control" type="password" name="password" placeholder="Password" />
-                            <!--end::Input-->
+                            <div class="position-relative mb-3">
+                                <input class="form-control" type="password" placeholder="Password" name="password" />
+                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+                                    data-kt-password-meter-control="visibility">
+                                    <i class="bi bi-eye-slash fs-2"></i>
+                                    <i class="bi bi-eye fs-2 d-none"></i>
+                                </span>
+                            </div>
                         </div>
                         @error('password')
                             <small>{{ $message }}</small>
                         @enderror
-                        <!--end::Input group-->
-                        <!--begin::Actions-->
+                        {{-- Action --}}
                         <div class="text-center">
-                            <!--begin::Submit button-->
-                            {{-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> --}}
                             <button type="submit" class="btn btn-primary btn-block w-100 mb-5">
                                 <span class="indicator-label">Sign In</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
                         </div>
-                        <!--end::Actions-->
                     </form>
-                    <!--end::Form-->
                 </div>
-                <!--end::Wrapper-->
             </div>
         </div>
-        <!--end::Authentication - Sign-in-->
     </div>
+
     <script>
         var hostUrl = "/html/demo1/dist/assets/";
     </script>
-    <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="/html/demo1/dist/assets/plugins/global/plugins.bundle.js"></script>
     <script src="/html/demo1/dist/assets/js/scripts.bundle.js"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Page Custom Javascript(used by this page)-->
     <script src="/html/demo1/dist/assets/js/custom/authentication/sign-in/general.js"></script>
-    <!--end::Page Custom Javascript-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--end::Javascript-->
+
     @if ($message = Session::get('success'))
         <script>
             Swal.fire('{{ $message }}');
