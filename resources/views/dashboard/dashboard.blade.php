@@ -60,6 +60,7 @@
                                         <h3 class="card-title align-items-start flex-column">
                                             <span class="card-label fw-bolder fs-4 text-gray-8000">Pelaporan:</span>
                                             <span class="text-danger fs-4 ms-2">{{ $jumlahPelaporan }}</span>
+                                            {{-- grafik bulan tes: {{ $dataBulanan['Februari'] }}</span> --}}
                                         </h3>
                                     </div>
                                 </div>
@@ -110,9 +111,7 @@
             $('.select2').select2();
 
             // Get the data from your PHP variables
-            var dataBulanan = @json($dataBulanan);
-
-            // Log data untuk memeriksanya di konsol
+            var dataBulanan = {!! $dataBulanan !!};
             console.log(dataBulanan);
 
             // Inisialisasi Chart.js setelah data siap
@@ -124,28 +123,28 @@
                     datasets: [{
                             label: 'Pengajuan',
                             data: Object.values(dataBulanan).map(data => data.pengajuan),
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            backgroundColor: 'rgba(75, 200, 200, 0.7)',
                             borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1,
                         },
                         {
                             label: 'Persetujuan',
                             data: Object.values(dataBulanan).map(data => data.persetujuan),
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1,
                         },
                         {
                             label: 'Realisasi',
                             data: Object.values(dataBulanan).map(data => data.realisasi),
-                            backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                            backgroundColor: 'rgba(255, 205, 86, 0.7)',
                             borderColor: 'rgba(255, 205, 86, 1)',
                             borderWidth: 1,
                         },
                         {
                             label: 'Pelaporan',
                             data: Object.values(dataBulanan).map(data => data.pelaporan),
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
                             borderColor: 'rgba(54, 162, 235, 1)',
                             borderWidth: 1,
                         },
@@ -159,7 +158,6 @@
                     },
                 },
             });
-
         });
     </script>
 @endsection
