@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\rektor;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pengajuan extends Model
 {
     use HasFactory;
+
+    protected $table = 'pengajuans'; // Make sure to set the correct table name if it's different
 
     protected $fillable = [
         'unit_fakultas',
@@ -16,6 +17,5 @@ class Pengajuan extends Model
         'total_anggaran',
         'waktu_pelaksanaan',
         'kriteria',
-        'status',
     ];
 }

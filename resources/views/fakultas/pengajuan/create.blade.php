@@ -13,6 +13,13 @@
                 <form action="{{ route('admin.fakultas-pengajuan-store') }}" method="post">
                     @csrf
 
+                    <!-- Unit/Fakultas -->
+                    <div class="mb-3">
+                        <label for="unitFakultas" class="form-label">Unit/Fakultas</label>
+                        <input type="text" class="form-control" id="unitFakultas" name="unit_fakultas"
+                            placeholder="Masukkan Unit/Fakultas" required>
+                    </div>
+
                     <!-- Judul Kegiatan -->
                     <div class="mb-3">
                         <label for="judulKegiatan" class="form-label">Judul Kegiatan</label>
@@ -28,12 +35,10 @@
                     </div>
 
                     <!-- Waktu Pelaksanaan -->
-                    <!-- Waktu Pelaksanaan -->
                     <div class="mb-3">
                         <label for="waktuPelaksanaan" class="form-label">Waktu Pelaksanaan</label>
                         <input type="date" class="form-control" id="waktuPelaksanaan" name="waktu_pelaksanaan" required>
                     </div>
-
 
                     <!-- Kriteria -->
                     <div class="mb-3">
@@ -46,14 +51,14 @@
                     </div>
 
                     <!-- Status -->
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-select" id="status" name="status" aria-label="Pilih Status" required>
                             <option selected disabled>Pilih Status</option>
                             <option value="diusulkan">Diusulkan</option>
                             <option value="ditolak">Ditolak</option>
                         </select>
-                    </div>
+                    </div> --}}
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="{{ route('admin.fakultas-pengajuan') }}" class="btn btn-danger">Kembali</a>

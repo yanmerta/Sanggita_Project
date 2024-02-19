@@ -4,14 +4,14 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelaporanController;
-use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PersetujuanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RealisasiController;
 use App\Http\Controllers\RektorPelaporanController;
-use App\Http\Controllers\RektorPengajuanController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RektorPengajuanController;
 
 
 /*
@@ -157,6 +157,9 @@ Route::group(
             RektorPengajuanController::class,
             'index',
         ])->name('rektor-pengajuan');
+        Route::get('/pengajuan/{id}', [RektorPengajuanController::class, 'show'])->name('rektor.pengajuan.show');
+    Route::post('/pengajuan/{id}/approve', [RektorPengajuanController::class, 'approve'])->name('rektor.pengajuan.approve');
+    Route::post('/pengajuan/{id}/reject', [RektorPengajuanController::class, 'reject'])->name('rektor.pengajuan.reject');
 
         // Persetujuan
         Route::get('/rektor-persetujuan', [
