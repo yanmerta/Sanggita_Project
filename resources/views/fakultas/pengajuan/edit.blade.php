@@ -44,17 +44,6 @@
                         </select>
                     </div>
 
-                    <!-- Status -->
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-select" id="status" name="status" aria-label="Pilih Status" required>
-                            <option value="diusulkan" {{ $pengajuan->status === 'diusulkan' ? 'selected' : '' }}>Diusulkan
-                            </option>
-                            <option value="ditolak" {{ $pengajuan->status === 'ditolak' ? 'selected' : '' }}>Ditolak
-                            </option>
-                        </select>
-                    </div>
-
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="{{ route('admin.fakultas-pengajuan') }}" class="btn btn-danger">Kembali</a>
                 </form>

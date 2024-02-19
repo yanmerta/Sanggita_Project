@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pengajuan;
+use App\Models\rektor\Pengajuan;
 
 class PengajuanController extends Controller
 {
@@ -42,14 +42,18 @@ class PengajuanController extends Controller
 
     public function store(Request $request)
     {
-        // Melakukan validasi form
-        $validatedData = $request->validate([
-            'judul_kegiatan' => 'required|string|max:255',
-            'total_anggaran' => 'required|numeric',
-            'waktu_pelaksanaan' => 'required|string',
-            'kriteria' => 'required|in:urgent,biasa',
-            'status' => 'required|string|max:255',
-        ]);
+            // Melakukan validasi form
+            $validatedData = $request->validate([
+                'unit_fakultas' => 'required|string|max:255',
+                'judul_kegiatan' => 'required|string|max:255',
+                'total_anggaran' => 'required|numeric',
+                'waktu_pelaksanaan' => 'required|date',
+                'kriteria' => 'required|in:urgent,biasa',
+            ]);
+        
+            // Set the default status to "Diusulkan"
+            $validatedData['status'] = 'diusulkan';
+        
 
         // Simpan data ke database
         Pengajuan::create($validatedData);
@@ -67,24 +71,23 @@ class PengajuanController extends Controller
         $title = 'Edit Pengajuan'; // Pastikan variabel $title telah didefinisikan
         return view('fakultas.pengajuan.edit', compact('pengajuan', 'title'));
     }
-
     public function update(Request $request, string $id)
     {
         $request->validate([
             'judul_kegiatan' => 'required|string|max:255',
             'total_anggaran' => 'required|numeric',
             'waktu_pelaksanaan' => 'required|date',
-            'kriteria' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
+            'kriteria' => 'required|in:urgent,biasa',
         ]);
-
+    
         $pengajuan = Pengajuan::findOrFail($id);
         $pengajuan->update($request->all());
-
+    
         return redirect()
             ->route('admin.fakultas-pengajuan')
             ->with('success', 'Pengajuan berhasil diperbarui.');
     }
+    
 
     public function destroy($id)
     {
