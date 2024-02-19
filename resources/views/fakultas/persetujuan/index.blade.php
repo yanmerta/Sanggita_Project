@@ -38,9 +38,12 @@
                                 <td>Rp. 15.000.000</td>
                                 <td>31/1/2024</td>
                                 <td>Urgent</td>
-                                <td>Usulan direalisasikan sebesar Rp.7.000.000</td>
+                                <td>Usulan disetujui</td>
                                 <td class="text-center">
                                     <a href="#" class="btn btn-success btn-sm">
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-sm">
                                         <i class="bi bi-file-earmark-fill bi-1x"></i>
                                     </a>
                                 </td>
@@ -51,9 +54,12 @@
                                 <td>Rp. 7.000.000</td>
                                 <td>14/2/2024</td>
                                 <td>Urgent</td>
-                                <td>Usulan direalisasikan sebesar Rp.7.000.000</td>
+                                <td>Usulan sedang direalisasikan</td>
                                 <td class="text-center">
                                     <a href="#" class="btn btn-success btn-sm">
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-sm">
                                         <i class="bi bi-file-earmark-fill bi-1x"></i>
                                     </a>
                                 </td>

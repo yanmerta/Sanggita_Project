@@ -1,5 +1,6 @@
 @extends('layout.main')
 @section('content')
+
 <div id="kt_content_container" class="container-xxl">
     <!--begin::Card-->
     <div class="card">
@@ -7,9 +8,7 @@
             <!--begin::Header-->
             <div class="card-header border-0 pt-5">
                 <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label fw-bolder fs-3 mb-1">Layanan Realisasi</span>
-                    <div class="card-toolbar">
-                    </div>
+                    <span class="card-label fw-bolder fs-3 mb-1">Layanan Pelaporan Anggaran - Periode Tahun 2024</span>
                 </h3>
             </div>
             <!--end::Header-->
@@ -23,6 +22,7 @@
                         <thead>
                             <tr class="fw-bolder text-muted bg-light">
                                 <th>No</th>
+                                <th>Unit/Fakultas</th>
                                 <th>Judul Kegiatan</th>
                                 <th>Total Anggaran</th>
                                 <th>Waktu Pelaksanaan</th>
@@ -33,28 +33,36 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                <td>1.</td>
+                                <td>Lembaga Penjamin Mutu</td>
                                 <td>Pengadaan ATK</td>
                                 <td>Rp. 15.000.000</td>
                                 <td>31/1/2024</td>
                                 <td>Urgent</td>
-                                <td>Usulan direalisasikan sebesar Rp.7.000.000</td>
-                                <td class="text-center">
+                                <td>Laporan Selesai</td>
+                                <td class="text-end">
                                     <a href="#" class="btn btn-success btn-sm">
-                                        <i class="bi bi-file-earmark-fill bi-1x"></i>
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-file-earmark-fill"></i>
                                     </a>
                                 </td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>Pengabdian</td>
-                                <td>Rp. 7.000.000</td>
-                                <td>14/2/2024</td>
+                                <td>2.</td>
+                                <td>Lembaga Penjamin Mutu</td>
+                                <td>Seminar Nasional</td>
+                                <td>Rp. 15.000.000</td>
+                                <td>31/2/2024</td>
                                 <td>Urgent</td>
-                                <td>Usulan direalisasikan sebesar Rp.7.000.000</td>
-                                <td class="text-center">
+                                <td>Proses Pelaporan</td>
+                                <td class="text-end">
                                     <a href="#" class="btn btn-success btn-sm">
-                                        <i class="bi bi-file-earmark-fill bi-1x"></i>
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-file-earmark-fill"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -65,8 +73,8 @@
             </div>
             <!--end::Table container-->
         </div>
-        <!--end::Card body-->
     </div>
     <!--end::Card-->
 </div>
+
 @endsection

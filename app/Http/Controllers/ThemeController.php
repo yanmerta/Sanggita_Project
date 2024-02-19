@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class ThemeController extends Controller
 {
+    public function index()
+    {
+        $data = [
+            'title' => 'Dark Mode',
+        ];
+
+        return view('theme.index', $data);
+    }
+
     public function readCookie(Request $request){
 
         $theme = $request->cookie('theme');

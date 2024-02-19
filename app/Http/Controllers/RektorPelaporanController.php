@@ -13,10 +13,18 @@ class RektorPelaporanController extends Controller
     public function index()
     {
         $pelaporans = Pelaporan::paginate(5);
-        $title = 'List of Pelaporans Rektor'; // Add this line to define $title
+        $title = 'List of Pelaporans Anggaran Rektor'; // Add this line to define $title
 
-        return view('rektor.pelaporan.index', compact('pelaporans', 'title'));
+        return view('rektor.pelaporan.anggaran.index', compact('pelaporans', 'title'));
 
+    }
+
+    public function rektor_pelaporan_kegiatan()
+    {
+        $pelaporans = Pelaporan::paginate(5);
+        $title = 'List of Pelaporans Kegiatan Rektor'; // Add this line to define $title
+
+        return view('rektor.pelaporan.kegiatan.index', compact('pelaporans', 'title'));
     }
 
     /**

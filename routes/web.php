@@ -174,5 +174,12 @@ Route::group(
             RektorPelaporanController::class,
             'index',
         ])->name('rektor-pelaporan');
+
+        Route::get('/rektor-pelaporan-kegiatan', [
+            RektorPelaporanController::class,
+            'rektor_pelaporan_kegiatan',
+        ])->name('rektor-pelaporan-kegiatan');
     }
 );
+
+Route::get('/theme', [ThemeController::class, 'index'])->name('theme');
