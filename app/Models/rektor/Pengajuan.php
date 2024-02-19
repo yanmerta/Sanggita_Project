@@ -17,5 +17,6 @@ class Pengajuan extends Model
         'total_anggaran',
         'waktu_pelaksanaan',
         'kriteria',
+        'status',
     ];
 }
