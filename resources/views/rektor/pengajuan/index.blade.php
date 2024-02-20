@@ -13,41 +13,51 @@
                 <!--begin::Table container-->
                 <div class="table-responsive">
                     <!--begin::Table-->
-                    <table class="table align-middle gs-0 gy-4">
+                    <table class="table align-middle gs-0 gy-4" style="border: 1px solid #dee2e6;">
                         <!--begin::Table head-->
                         <thead>
                             <tr class="fw-bolder text-muted bg-light">
-                                <th>No</th>
-                                <th>Unit/Fakultas</th>
-                                <th>Judul Kegiatan</th>
-                                <th>Total Anggaran</th>
-                                <th>Waktu Pelaksanaan</th>
-                                <th>Kriteria</th>
-                                <th>Status</th>
-                                <th class="text-center">Aksi</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">No.</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Unit/Fakultas</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Judul Kegiatan</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Total Anggaran</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Waktu Pelaksanaan</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Kriteria</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Status</th>
+                                <th style="border: 1px solid #dee2e6; text-align:center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($pengajuans as $pengajuan)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $pengajuan->unit_fakultas }}</td>
-                                    <td>{{ $pengajuan->judul_kegiatan }}</td>
-                                    <td>Rp. {{ number_format($pengajuan->total_anggaran) }}</td>
-                                    <td>{{ $pengajuan->waktu_pelaksanaan }}</td>
-                                    <td>{{ $pengajuan->kriteria }}</td>
-                                    <td>{{ $pengajuan->status }}</td>
-                                    <td class="text-end">
-                                        <!-- Tambahkan tombol aksi sesuai kebutuhan -->
-                                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#showModal{{ $pengajuan->id }}">
-                                            <i class="bi bi-info-circle-fill"></i>
-                                        </button>
+                                    <td style="border: 1px solid #dee2e6;text-align:center">{{ $loop->iteration }}</td>
+                                    <td style="border: 1px solid #dee2e6;">{{ $pengajuan->unit_fakultas }}
+                                    </td>
+                                    <td style="border: 1px solid #dee2e6;">{{ $pengajuan->judul_kegiatan }}
+                                    </td>
+                                    <td style="border: 1px solid #dee2e6;">Rp.
+                                        {{ number_format($pengajuan->total_anggaran) }}</td>
+                                    <td style="border: 1px solid #dee2e6; text-align:center">
+                                        {{ $pengajuan->waktu_pelaksanaan }}</td>
+                                    <td style="border: 1px solid #dee2e6;text-align:center">{{ $pengajuan->kriteria }}</td>
+                                    <td
+                                        style="border: 1px solid #dee2e6; text-align: center; padding: 5px; color: @php echo strtolower($pengajuan->status) === 'disetujui' ? 'green' : (strtolower($pengajuan->status) === 'ditolak' ? 'red' : 'black'); @endphp">
+                                        {{ $pengajuan->status }}
+                                    </td>
 
-                                        <a href="{{ route('admin.rektor.pengajuan.show', $pengajuan->id) }}"
-                                            class="btn btn-primary btn-sm">
-                                            <i class="bi bi-file-earmark-fill"></i>
-                                        </a>
+
+                                    <td style="border: 1px solid #dee2e6;" class="text-center">
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success btn-sm m-1" data-bs-toggle="modal"
+                                                data-bs-target="#showModal{{ $pengajuan->id }}">
+                                                <i class="bi bi-info-circle-fill"></i>
+                                            </button>
+
+                                            <a href="{{ route('admin.rektor.pengajuan.show', $pengajuan->id) }}"
+                                                class="btn btn-primary btn-sm m-1">
+                                                <i class="bi bi-file-earmark-fill"></i>
+                                            </a>
+                                        </div>
                                     </td>
 
                                 </tr>
@@ -81,6 +91,14 @@
                         </tbody>
                     </table>
                 </div>
+                @if ($pengajuans->isEmpty())
+                    <div class="text-center" style="font-weight:">
+                        <h6>No data available in table</h6>
+                    </div>
+                @endif
+                <ul class="pagination pagination-circle pagination-outline justify-content-end">
+                    {{ $pengajuans->links('pagination::bootstrap-4') }}
+                </ul>
                 <!--end::Table-->
             </div>
             <!--end::Table container-->

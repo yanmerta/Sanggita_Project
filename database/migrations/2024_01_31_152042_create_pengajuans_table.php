@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('persetujuan_id')->nullable()->constrained('persetujuans')->onDelete('set null');
             $table->string('unit_fakultas');
             $table->string('judul_kegiatan');
             $table->decimal('total_anggaran', 15, 0);

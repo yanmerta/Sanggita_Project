@@ -11,7 +11,7 @@ class RektorPengajuanController extends Controller
 {
     public function index()
     {
-        $pengajuans = Pengajuan::paginate(10);
+        $pengajuans = Pengajuan::paginate(5);
         $title = 'List of Pengajuans Rektor';
 
         return view('rektor.pengajuan.index', compact('pengajuans', 'title'));

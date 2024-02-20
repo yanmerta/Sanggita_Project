@@ -93,10 +93,12 @@
                             <th style="border: 1px solid #dee2e6; text-align:center">No.</th>
                             <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.judul_kegiatan') }}</th>
                             <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.total_anggaran') }}</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.waktu_pelaksanaan') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.waktu_pelaksanaan') }}
+                            </th>
                             <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.kriteria') }}</th>
                             <th style="border: 1px solid #dee2e6;text-align:center">{{ __('users.status') }}</th>
-                            <th style="border: 1px solid #dee2e6;text-align:center"class="text-center">{{ __('users.Aksi') }}</th>
+                            <th style="border: 1px solid #dee2e6;text-align:center"class="text-center">
+                                {{ __('users.Aksi') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,9 +113,10 @@
                                 <td style="border: 1px solid #dee2e6;text-align:center">{{ $pengajuan->kriteria }}
                                 </td>
                                 <td
-                                    style="border: 1px solid #dee2e6; text-align: center; @if (Str::lower($pengajuan->status) === 'ditolak') color: red; @endif">
+                                    style="border: 1px solid #dee2e6; text-align: center; color: @php echo strtolower($pengajuan->status) === 'disetujui' ? 'green' : (strtolower($pengajuan->status) === 'ditolak' ? 'red' : 'black'); @endphp">
                                     {{ $pengajuan->status }}
                                 </td>
+
 
                                 <td style="border: 1px solid #dee2e6;" class="text-center">
                                     <div class="d-flex justify-content-center">

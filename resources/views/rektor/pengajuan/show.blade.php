@@ -1,5 +1,3 @@
-<!-- resources/views/rektor/pengajuan/show.blade.php -->
-
 @extends('layout.main')
 
 @section('content')
@@ -12,21 +10,35 @@
             </div>
             <div class="card-body py-3">
                 <!-- Display Pengajuan details here -->
-                <p>Unit/Fakultas: {{ $pengajuan->unit_fakultas }}</p>
-                <p>Judul Kegiatan: {{ $pengajuan->judul_kegiatan }}</p>
-                <p>Total Anggaran: Rp. {{ number_format($pengajuan->total_anggaran) }}</p>
-                <p>Waktu Pelaksanaan: {{ $pengajuan->waktu_pelaksanaan }}</p>
-                <p>Kriteria: {{ $pengajuan->kriteria }}</p>
-                <p>Status: {{ $pengajuan->status }}</p>
+                <div class="mb-3">
+                    <strong>Unit/Fakultas:</strong> {{ $pengajuan->unit_fakultas }}
+                </div>
+                <div class="mb-3">
+                    <strong>Judul Kegiatan:</strong> {{ $pengajuan->judul_kegiatan }}
+                </div>
+                <div class="mb-3">
+                    <strong>Total Anggaran:</strong> Rp. {{ number_format($pengajuan->total_anggaran) }}
+                </div>
+                <div class="mb-3">
+                    <strong>Waktu Pelaksanaan:</strong> {{ $pengajuan->waktu_pelaksanaan }}
+                </div>
+                <div class="mb-3">
+                    <strong>Kriteria:</strong> {{ $pengajuan->kriteria }}
+                </div>
+                <div class="mb-3">
+                    <strong>Status:</strong> {{ $pengajuan->status }}
+                </div>
                 <!-- ... other details -->
 
-                <!-- Approval/Rejection form -->
-                <form action="{{ route('admin.rektor.pengajuan.approve', $pengajuan->id) }}" method="post">
+                <!-- Approval/Rejection form with confirmation -->
+                <form action="{{ route('admin.rektor.pengajuan.approve', $pengajuan->id) }}" method="post"
+                    onsubmit="return confirm('Yakin Anda ingin menyetujui pengajuan ini?')">
                     @csrf
                     <button type="submit" class="btn btn-success">Approve</button>
                 </form>
 
-                <form action="{{ route('admin.rektor.pengajuan.reject', $pengajuan->id) }}" method="post">
+                <form action="{{ route('admin.rektor.pengajuan.reject', $pengajuan->id) }}" method="post"
+                    onsubmit="return confirm('Yakin Anda ingin menolak pengajuan ini?')">
                     @csrf
                     <button type="submit" class="btn btn-danger">Reject</button>
                 </form>

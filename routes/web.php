@@ -12,6 +12,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RektorPengajuanController;
+use App\Http\Controllers\RektorPersetujuanController;
 
 
 /*
@@ -166,6 +167,8 @@ Route::group(
             PersetujuanController::class,
             'rektor_persetujuan',
         ])->name('rektor-persetujuan');
+        Route::get('/rektor-persetujuan', [RektorPersetujuanController::class, 'index'])->name('rektor-persetujuan');
+Route::get('/rektor-persetujuan/{id}', [RektorPersetujuanController::class, 'show'])->name('rektor-persetujuan.show');
         // Realisasi
         Route::get('/rektor-realisasi', [
             RealisasiController::class,

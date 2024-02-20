@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('persetujuans', function (Blueprint $table) {
             $table->id();
+            $table->string('unit_fakultas');
+            $table->string('judul_kegiatan');
+            $table->decimal('total_anggaran', 15, 0);
+            $table->date('waktu_pelaksanaan');
+            $table->string('kriteria');
+            $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

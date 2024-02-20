@@ -19,4 +19,8 @@ class Pengajuan extends Model
         'kriteria',
         'status',
     ];
+    public function persetujuan()
+    {
+        return $this->belongsTo(Persetujuan::class, 'persetujuan_id');
+    }
 }
