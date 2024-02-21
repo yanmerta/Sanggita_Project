@@ -53,6 +53,11 @@ class PengajuanController extends Controller
         
             // Set the default status to "Diusulkan"
             $validatedData['status'] = 'diusulkan';
+
+            $validatedData['judul_kegiatan'] = $request->input('judul_kegiatan');
+            $validatedData['total_anggaran'] = $request->input('total_anggaran');
+            $validatedData['waktu_pelaksanaan'] = $request->input('waktu_pelaksanaan');
+            $validatedData['kriteria'] = $request->input('kriteria');
         
 
         // Simpan data ke database

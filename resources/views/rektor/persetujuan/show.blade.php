@@ -10,7 +10,29 @@
             </div>
             <div class="card-body py-3">
                 <!-- Display details for the specific approval request -->
-                <p>Unit / Fakultas: {{ $pengajuan->unit_fakultas }}</p>
+                <div class="border p-3 mb-3">
+                    <p>Unit / Fakultas: {{ $pengajuan->unit_fakultas }}</p>
+                    <p>Judul Kegiatan: {{ $pengajuan->judul_kegiatan }}</p>
+                    <p>Total Anggaran: {{ $pengajuan->total_anggaran }}</p>
+                    <p>Waktu Pelaksanaan: {{ $pengajuan->waktu_pelaksanaan }}</p>
+                    <p>Kriteria: {{ $pengajuan->kriteria }}</p>
+                    <p>Status: {{ $pengajuan->status }}</p>
+
+                    <!-- Show approval status -->
+                    @if ($pengajuan->status == 'disetujui')
+                        <div class="alert alert-success" role="alert">
+                            Kegiatan ini telah disetujui.
+                        </div>
+                    @elseif($pengajuan->status == 'ditolak')
+                        <div class="alert alert-danger" role="alert">
+                            Kegiatan ini ditolak.
+                        </div>
+                    @else
+                        <div class="alert alert-warning" role="alert">
+                            Kegiatan ini masih menunggu persetujuan.
+                        </div>
+                    @endif
+                </div>
                 <!-- Add other details as needed -->
             </div>
         </div>
